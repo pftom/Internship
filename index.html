@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="lib/echarts.js"></script>
+  <title>Document</title>
+</head>
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+
+  <script>
+		var myChart = echarts.init(document.getElementById('main'));
+		
+		/*
+   * legend 数据用来切换不同的嫌疑人以进行对比
+   * 举个例子：
+   *  张三：的收邮件的数据为上面 的  `data`
+   *
+   * 
+   */ 
+	 var legendData = [ '收邮件', '发邮件', '张三', '李四' ];
+
+	// 指定图表的配置项和数据
+	/*
+	* data表示一个“嫌疑犯”的所有收发邮件的记录
+	* name： 标志这条记录的 `名字`
+	* value: 
+	*  第一个字段: 标记这条邮件记录的收发 `时间`
+	*  第二个字段：标题这个时间点收发邮件的 `条数`
+	*/
+
+var DATASET = {
+	'张三': [
+			{
+				name: '收邮件',
+				data: [
+					{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 80]},
+					{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 60]},
+					{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 60]},
+					{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 90]},
+					{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 100]},
+					{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 120]},
+					{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 40]},
+					{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 20]},
+				]
+			},
+			{
+				name: '发邮件',
+				data: [
+					{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 40]},
+					{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 30]},
+					{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 30]},
+					{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 10]},
+					{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 20]},
+					{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 30]},
+					{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 80]},
+					{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 40]},
+				]
+			}
+		],
+	'李四': [
+		{
+			name: '收邮件',
+			data: [
+				{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+				{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 42]},
+				{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 52]},
+				{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 64]},
+				{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+				{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 86]},
+				{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 35]},
+				{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 20]},
+			]
+		},
+		{
+			name: '发邮件',
+			data: [
+				{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+				{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 23]},
+				{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 34]},
+				{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 23]},
+				{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+				{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 23]},
+				{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 56]},
+				{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 88]},
+			]
+		}
+	],
+};
+
+	/*
+	 * 构造数据
+	 *
+	 */
+	 function constructData (dataset, legendData, hideData) {
+		 var i = 2, j = 0;
+
+		 console.log('hideData', hideData);
+
+		 var constructedData = [];
+
+		 for ( ; j < legendData.length; j++) {
+			console.log(legendData[j]);
+			constructedData.push({
+				 name: legendData[j],
+				 type: 'line',
+			 })
+		 }
+
+		 for ( ; i < legendData.length; i++) {
+			if (Array.isArray(hideData)) {
+				var flag = false;
+				var k = 0;
+				for ( ; k < hideData.length; k++) {
+					if (hideData[k] === legendData[i]) {
+						flag = true;
+						break;
+					}
+				}
+
+				if (flag) {
+					continue;
+				}
+			}
+			j = 0;
+			const childLegendData = legendData[i];
+			const childDataset = dataset[childLegendData];
+			for ( ; j < childDataset.length; j++) {
+				if (Array.isArray(hideData)) {
+					var flag = false;
+					var k = 0;
+					for ( ; k < hideData.length; k++) {
+						if (hideData[k] === childDataset[j].name) {
+							flag = true;
+							break;
+						}
+					}
+	
+					if (flag) {
+						continue;
+					}
+				}
+				constructedData.push({
+					name: `${childLegendData}-${childDataset[j].name}`,
+					data: childDataset[j].data,
+					type: 'line',
+				});
+			}
+		 }
+
+		 constructedData.push({
+			name:'.anchor',
+			type:'line', 
+			showSymbol:false, 
+			data:	anchor,
+			itemStyle:{normal:{opacity:0}},
+			lineStyle:{normal:{opacity:0}},
+		 });
+
+
+		 console.log('constructedData', constructedData);
+		 return constructedData;
+	 }
+  
+  
+  /*
+   * anchor 数据用来扩展  时间表示格式 到“小时”  不可删改。
+   * 
+   */
+  var anchor = [
+    {name:'2016/12/18 00:00:00', value:['2016/12/18 00:00:00', 0]},
+    {name:'2016/12/25 00:00:00', value:['2016/12/25 00:00:00', 0]}
+		];
+  
+  option = {
+		title : {
+				x: 'center',
+				textStyle:{
+					fontSize:16
+				}
+		},
+		color:["#80cbc4"],
+		grid: 
+			{
+					bottom: 70
+			},
+			legend:{
+				/* 
+					* 表示选择多个不同的“嫌疑犯”进行比较
+					* 每增加一个嫌犯， 就在legendData 增加一个嫌犯的 `名字`
+					*/ 
+				data: legendData,
+			},
+        tooltip : {
+					trigger: 'axis',
+					axisPointer:{
+						lineStyle:{
+							type:'dashed',
+							color:'#a4a4a4',
+							opacity:0.7
+						}
+					},
+					formatter: function (params) {
+							params = params[0];
+							var date = new Date(params.name);
+							return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+					},
+        },
+        dataZoom:[
+          {
+            show:true,
+            realtime:true,
+            start:30,
+            end:70,
+            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+              handleSize: '30%',
+              handleStyle: {
+                  color: '#80cbc4'
+              },
+            fillerColor:'#d8faf4',
+            borderColor:"#b1b1b1"
+          },
+          {
+						type: 'inside',
+						start: 10,
+						end: 60,
+					}
+        ],
+        xAxis : [
+            {
+                type : 'time',
+                axisTick: {
+                  show: false
+              },
+              axisLine: {
+                  lineStyle: {
+                      color: '#90979c'
+                  }
+              },
+                
+            }
+        ],
+        yAxis: [
+            {
+              boundaryGap: [0, '100%'],
+              type: 'value'
+            }
+        ],
+        series: constructData(DATASET, legendData),
+		};
+		
+		myChart.on('legendselectchanged', function (params) {
+			console.log('params', params);
+			console.log('myChart', myChart.setOption);
+
+			var options = myChart.getOption();
+
+			var hideArray = [];
+			var selectedArray = params.selected;
+			var paramsKeys = Object.keys(selectedArray);
+			console.log('paramsKeys', paramsKeys);
+			for (var i = 0; i < paramsKeys.length; i++) {
+				console.log('selectedArray[paramsKeys[i]]', selectedArray[paramsKeys[i]]);
+				if (!selectedArray[paramsKeys[i]]) {
+					hideArray.push(paramsKeys[i]);
+				}
+			}
+			options.series = constructData(DATASET, legendData, hideArray);
+			
+			myChart.setOption(options,
+			{
+				notMerge: true,
+			}
+			);
+		})
+
+		// 使用刚指定的配置项和数据显示图表。
+		myChart.setOption(option);
+  </script>
+</body>
+</html>
