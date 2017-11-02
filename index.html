@@ -5,13 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="lib/echarts.js"></script>
-  <title>Document</title>
+	<title>Document</title>
 </head>
 <body>
-    <div id="main" style="width: 600px;height:400px;"></div>
+    <div id="main" style="width: 600px;height:400px;">
+		</div>
+		<div id="control">
+		</div>
 
   <script>
-		var myChart = echarts.init(document.getElementById('main'));
+		var chartDom = document.getElementById('main');
+		var myChart = echarts.init(chartDom);
 		
 		/*
    * legend 数据用来切换不同的嫌疑人以进行对比
@@ -20,7 +24,12 @@
    *
    * 
    */ 
-	 var legendData = [ '收邮件', '发邮件', '张三', '李四' ];
+	 var legendData = [ 
+		 '收邮件', 
+		 '发邮件', 
+		 '张三', 
+		 '李四',
+	 ];
 
 	// 指定图表的配置项和数据
 	/*
@@ -88,28 +97,224 @@ var DATASET = {
 			]
 		}
 	],
+	'王五': [
+	{
+		name: '收邮件',
+		data: [
+			{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+			{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 42]},
+			{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 52]},
+			{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 64]},
+			{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+			{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 86]},
+			{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 35]},
+			{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 20]},
+		]
+	},
+	{
+		name: '发邮件',
+		data: [
+			{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+			{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 23]},
+			{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 34]},
+			{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 23]},
+			{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+			{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 23]},
+			{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 56]},
+			{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 88]},
+		]
+	}
+],
+'66': [
+{
+	name: '收邮件',
+	data: [
+		{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+		{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 42]},
+		{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 52]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 64]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+		{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 86]},
+		{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 35]},
+		{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 20]},
+	]
+},
+{
+	name: '发邮件',
+	data: [
+		{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+		{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 23]},
+		{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 34]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 23]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+		{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 23]},
+		{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 56]},
+		{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 88]},
+	]
+}
+],
+'77': [
+{
+	name: '收邮件',
+	data: [
+		{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+		{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 42]},
+		{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 52]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 64]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+		{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 86]},
+		{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 35]},
+		{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 20]},
+	]
+},
+{
+	name: '发邮件',
+	data: [
+		{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+		{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 23]},
+		{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 34]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 23]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+		{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 23]},
+		{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 56]},
+		{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 88]},
+	]
+}
+],
+'88': [
+{
+	name: '收邮件',
+	data: [
+		{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+		{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 42]},
+		{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 52]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 64]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+		{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 86]},
+		{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 35]},
+		{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 20]},
+	]
+},
+{
+	name: '发邮件',
+	data: [
+		{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+		{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 23]},
+		{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 34]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 23]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+		{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 23]},
+		{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 56]},
+		{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 88]},
+	]
+}
+],
+'99': [
+{
+	name: '收邮件',
+	data: [
+		{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+		{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 42]},
+		{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 52]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 64]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+		{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 86]},
+		{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 35]},
+		{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 20]},
+	]
+},
+{
+	name: '发邮件',
+	data: [
+		{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+		{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 23]},
+		{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 34]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 23]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+		{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 23]},
+		{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 56]},
+		{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 88]},
+	]
+}
+],
+'1010': [
+{
+	name: '收邮件',
+	data: [
+		{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+		{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 42]},
+		{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 52]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 64]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+		{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 86]},
+		{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 35]},
+		{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 20]},
+	]
+},
+{
+	name: '发邮件',
+	data: [
+		{name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', 12]},
+		{name:'2016/12/18 7:38:08', value:['2016/12/18 7:38:08', 23]},
+		{name:'2016/12/18 16:18:18', value:['2016/12/18 16:18:18', 34]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/18 19:18:18', 23]},
+		{name:'2016/12/19 19:18:18', value:['2016/12/19 19:18:18', 56]},
+		{name:'2016/12/20 19:18:18', value:['2016/12/20 19:18:18', 23]},
+		{name:'2016/12/21 19:18:18', value:['2016/12/21 19:18:18', 56]},
+		{name:'2016/12/21 22:18:18', value:['2016/12/21 22:18:18', 88]},
+	]
+}
+]
 };
+
+	/*
+	 *	映射 `特征` 到 `颜色` 数据
+	 *  增加特征 就需要 增加 `相应的键值对`
+	 */
+	 var featureMapToColor = {
+		'收邮件': '#80cbc4',
+		'发邮件': '#88e186',
+	 };
 
 	/*
 	 * 构造数据
 	 *
 	 */
 	 function constructData (dataset, legendData, hideData) {
+		 /* 
+			* i 用来表示一个人有多少个特征
+			* ex: i = 2, 表示目前有： 收邮件， 发邮件 两个特征
+			*/
 		 var i = 2, j = 0;
 
 		 console.log('hideData', hideData);
 
+		 // 用于构造要展现的数据
 		 var constructedData = [];
 
-		 for ( ; j < legendData.length; j++) {
+		 /*
+			* 构造空数据，用于展示 所有人和所有特征的 `图例`
+			* 以及用于控制 数据的展现
+			*/
+		 for ( ; j < i; j++) {
 			console.log(legendData[j]);
-			constructedData.push({
-				 name: legendData[j],
-				 type: 'line',
-			 })
+				constructedData.push({
+					name: legendData[j],
+					// pie 表示人， line 表示 人的特征
+					type: 'line',
+					itemStyle: {
+						normal: {
+							color: featureMapToColor[legendData[j]]
+						}
+					}
+				})
 		 }
 
 		 for ( ; i < legendData.length; i++) {
+			 /*
+				* 此if语句用于过滤 `人` 的数据
+				* 通过传进来的 hideData 中关于人的字段来过滤其数据
+				*/
 			if (Array.isArray(hideData)) {
 				var flag = false;
 				var k = 0;
@@ -128,6 +333,10 @@ var DATASET = {
 			const childLegendData = legendData[i];
 			const childDataset = dataset[childLegendData];
 			for ( ; j < childDataset.length; j++) {
+				/*
+				* 此if语句用于过滤 `人的特征` 的数据
+				* 通过传进来的 hideData 中关于 `特征` 的字段来过滤其数据
+				*/
 				if (Array.isArray(hideData)) {
 					var flag = false;
 					var k = 0;
@@ -142,10 +351,33 @@ var DATASET = {
 						continue;
 					}
 				}
+
+				/*
+				 *	下面构建的数据
+				 *
+				 */
 				constructedData.push({
 					name: `${childLegendData}-${childDataset[j].name}`,
 					data: childDataset[j].data,
 					type: 'line',
+					hoverAnimation:true,
+					symbolSize: 4,
+					itemStyle:{
+						emphasis:{
+							color: featureMapToColor[childDataset[j].name],
+							borderColor:'#fff',
+							borderWidth:4,
+							borderType:'solid',
+							shadowBlur:5,
+							shadowColor:'#9c9a9b',	
+						}
+					},
+					lineStyle: {
+						normal: {
+							width: 1,
+							color: featureMapToColor[childDataset[j].name],
+						}
+					}
 				});
 			}
 		 }
@@ -192,9 +424,11 @@ var DATASET = {
 					* 每增加一个嫌犯， 就在legendData 增加一个嫌犯的 `名字`
 					*/ 
 				data: legendData,
+				type: 'scroll',
+				itemGap: 20,
 			},
         tooltip : {
-					trigger: 'axis',
+					trigger: 'item',
 					axisPointer:{
 						lineStyle:{
 							type:'dashed',
@@ -203,9 +437,15 @@ var DATASET = {
 						}
 					},
 					formatter: function (params) {
-							params = params[0];
-							var date = new Date(params.name);
-							return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+							if (!!params) {
+								console.log('params', params);
+								var name = params.seriesName
+														.replace('\n\n', '姓名：')
+														.replace('-', '<br >类别：')
+								console.log('name', name);
+								var value = params.data.value;
+								return name + '<br /> 时间：' + value[0] + '<br />数量：' + value[1];
+							}
 					},
         },
         dataZoom:[
@@ -227,7 +467,7 @@ var DATASET = {
 						start: 10,
 						end: 60,
 					}
-        ],
+				],
         xAxis : [
             {
                 type : 'time',
@@ -250,23 +490,68 @@ var DATASET = {
         ],
         series: constructData(DATASET, legendData),
 		};
+
+
+		// 渲染人名，来控制数据渲染
+		var controlNode = document.getElementById('control');
+		var ulNode = document.createElement('ul');
+		ulNode.className = 'person-box'
+		for (var i = 2; i < legendData.length; i++) {
+		 var liNode = document.createElement('li');
+		 liNode.className = 'person-item active';
+		 liNode.innerText = legendData[i];
+		 ulNode.appendChild(liNode);
+		}
+		controlNode.appendChild(ulNode);
+ 
+		var nodesArray = document.getElementsByClassName('person-item');
+		for (var i = 0; i < nodesArray.length; i++) {
+			nodesArray[i].onclick = function () {
+				var flag = this.className.indexOf('inactive');
+				if (flag >= 0) {
+					this.className = 'person-item active';
+				} else {
+					this.className = 'person-item inactive';
+				}
+ 
+				var hideArrayName = [];
+				for (var j = 0; j < nodesArray.length; j++) {
+					var flag = nodesArray[j].className.indexOf('inactive');
+					if (flag >= 0) {
+						hideArrayName.push(
+							nodesArray[j].innerText
+						)
+					}
+				}
+ 
+				var options = myChart.getOption();
+				options.series = constructData(DATASET, legendData, hideArrayName);
+				
+				myChart.setOption(options,
+				{
+					notMerge: true,
+				}
+				);
+ 
+			}
+		}
 		
 		myChart.on('legendselectchanged', function (params) {
 			console.log('params', params);
 			console.log('myChart', myChart.setOption);
 
-			var options = myChart.getOption();
 
 			var hideArray = [];
 			var selectedArray = params.selected;
 			var paramsKeys = Object.keys(selectedArray);
 			console.log('paramsKeys', paramsKeys);
-			for (var i = 0; i < paramsKeys.length; i++) {
+			for (var i = 0; i < 2; i++) {
 				console.log('selectedArray[paramsKeys[i]]', selectedArray[paramsKeys[i]]);
 				if (!selectedArray[paramsKeys[i]]) {
 					hideArray.push(paramsKeys[i]);
 				}
 			}
+			var options = myChart.getOption();
 			options.series = constructData(DATASET, legendData, hideArray);
 			
 			myChart.setOption(options,
@@ -278,6 +563,21 @@ var DATASET = {
 
 		// 使用刚指定的配置项和数据显示图表。
 		myChart.setOption(option);
-  </script>
+
+		
+	</script>
+	<script>
+			/*
+				var myChartContainer = function () {
+					chartDom.style.width = window.innerWidth+'px';
+					chartDom.style.height = window.innerHeight+'px';
+				};
+		
+				window.onresize = function () {
+					myChartContainer();
+					myChart.resize();
+				}
+			*/
+	</script>
 </body>
 </html>
