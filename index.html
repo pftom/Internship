@@ -276,18 +276,34 @@ var DATASET = {
 		'发邮件': '#88e186',
 	 };
 
+
+	 /*
+		 * 全局维护一个所有人的所有特征的 状态对象
+		 * 以下两种选择都依靠此数组来更新数据
+		 */
+		 var allHideObject = {
+			'张三': {
+				'收邮件': true,
+				'发邮件': true,
+			},
+			'李四': {
+				'收邮件': true,
+				'发邮件': true,
+			}
+		};
+
 	/*
 	 * 构造数据
 	 *
 	 */
-	 function constructData (dataset, legendData, hideData) {
+	 function constructData (dataset, legendData, allHideObject) {
 		 /* 
 			* i 用来表示一个人有多少个特征
 			* ex: i = 2, 表示目前有： 收邮件， 发邮件 两个特征
 			*/
 		 var i = 2, j = 0;
 
-		 console.log('hideData', hideData);
+		 console.log('allHideObject', allHideObject);
 
 		 // 用于构造要展现的数据
 		 var constructedData = [];
@@ -310,46 +326,31 @@ var DATASET = {
 				})
 		 }
 
-		 for ( ; i < legendData.length; i++) {
-			 /*
-				* 此if语句用于过滤 `人` 的数据
-				* 通过传进来的 hideData 中关于人的字段来过滤其数据
-				*/
-			if (Array.isArray(hideData)) {
-				var flag = false;
-				var k = 0;
-				for ( ; k < hideData.length; k++) {
-					if (hideData[k] === legendData[i]) {
-						flag = true;
-						break;
-					}
-				}
+		 /*
+			* 构造用于展示的数据， 以及过滤相关的数据
+			*
+			*
+			*/
 
-				if (flag) {
-					continue;
-				}
-			}
+		 for ( ; i < legendData.length; i++) {
 			j = 0;
-			const childLegendData = legendData[i];
-			const childDataset = dataset[childLegendData];
+			// 
+			const personData = legendData[i];
+			console.log('personData', personData);
+
+			// 这个人的 所有特征数据
+			const childDataset = dataset[personData];
+
+			// 遍历过滤数据 和 构建用于展示的数据
 			for ( ; j < childDataset.length; j++) {
 				/*
 				* 此if语句用于过滤 `人的特征` 的数据
 				* 通过传进来的 hideData 中关于 `特征` 的字段来过滤其数据
 				*/
-				if (Array.isArray(hideData)) {
-					var flag = false;
-					var k = 0;
-					for ( ; k < hideData.length; k++) {
-						if (hideData[k] === childDataset[j].name) {
-							flag = true;
-							break;
-						}
-					}
-	
-					if (flag) {
-						continue;
-					}
+
+				var personStatusArray = allHideObject[ personData ];
+				if (!personStatusArray[ childDataset[j].name ]) {
+					continue;
 				}
 
 				/*
@@ -357,7 +358,7 @@ var DATASET = {
 				 *
 				 */
 				constructedData.push({
-					name: `${childLegendData}-${childDataset[j].name}`,
+					name: `${personData}-${childDataset[j].name}`,
 					data: childDataset[j].data,
 					type: 'line',
 					hoverAnimation:true,
@@ -488,7 +489,7 @@ var DATASET = {
               type: 'value'
             }
         ],
-        series: constructData(DATASET, legendData),
+        series: constructData(DATASET, legendData, allHideObject),
 		};
 
 
@@ -504,28 +505,97 @@ var DATASET = {
 		}
 		controlNode.appendChild(ulNode);
  
+		// 监听 onclick 事件，模拟更新人名数据
 		var nodesArray = document.getElementsByClassName('person-item');
+		// 遍历dom数组，逐个监听onclick事件
 		for (var i = 0; i < nodesArray.length; i++) {
 			nodesArray[i].onclick = function () {
+				/*
+				 *
+				 * 如果类名中含有 inactive字段，
+				 * 就表示此数据 之前的状态是 未激活的，则将其调为激活
+				 * 
+				 * 如果类名中含有 active 字段
+				 * 就表示此数据 之前的状态是 激活的， 则将其调为未激活
+				 */
 				var flag = this.className.indexOf('inactive');
 				if (flag >= 0) {
 					this.className = 'person-item active';
+
+					// 遍历全局的 allHideObject 将此 人 的所有特征数据调为激活状态
+					var allHideObjectNameKeys = Object.keys(allHideObject);
+					for (var i = 0; i < allHideObjectNameKeys.length; i++) {
+						// 获取此 人 的 `name` 字段
+						var name = this.innerText;
+
+						// 获取此 人 字段下所有 特征
+						var personAllFeatureKeys = Object.keys( allHideObject[ name ] );
+						for (var j = 0; j < personAllFeatureKeys.length; j++) {
+							// 将此 人 字段下所有  特征 设置为 true
+							allHideObject[ name ][ personAllFeatureKeys[j] ] = true;
+						}
+					}
 				} else {
 					this.className = 'person-item inactive';
-				}
- 
-				var hideArrayName = [];
-				for (var j = 0; j < nodesArray.length; j++) {
-					var flag = nodesArray[j].className.indexOf('inactive');
-					if (flag >= 0) {
-						hideArrayName.push(
-							nodesArray[j].innerText
-						)
+
+					// 遍历全局的 allHideObject 将此 人 的所有特征数据调为 未激活状态
+					var allHideObjectNameKeys = Object.keys(allHideObject);
+					for (var i = 0; i < allHideObjectNameKeys.length; i++) {
+						// 获取此 人 的 `name` 字段
+						var name = this.innerText;
+
+						// 获取此 人 字段下所有 特征
+						var personAllFeatureKeys = Object.keys( allHideObject[ name ] );
+						for (var j = 0; j < personAllFeatureKeys.length; j++) {
+							// 将此 人 字段下所有  特征 设置为 false
+							allHideObject[ name ][ personAllFeatureKeys[j] ] = false;
+						}
 					}
 				}
+
+				console.log('allHideObject', allHideObject);
+				// 发起 legendSelect 和 legendUnSelect 事件来更新响应的legend
+				var personKeys = Object.keys(allHideObject);
+
+				// 获取 人 所有的 `特征` 的 keys
+				var featureKeys = Object.keys( allHideObject[ personKeys[0] ] );
+				for (var i = 0; i < featureKeys.length; i++) {
+					// 获取 此 特征 的 name
+					var name = featureKeys[i];
+					/*
+					 * 设立 flag 为 true， 判断所有 `人` 的 此 `特征` 字段都为false，则unselect legend
+					 * 如果存在为 true 的字段，则 select legend
+					 */
+					var flag = false;
+					for (var j = 0; j < personKeys.length; j++) {
+						var personFeatureStatus = personKeys[ featureKeys[i] ];
+						flag = flag || personFeatureStatus;
+					}
+
+					/* 
+					 * 如果flag 为 true 则表明存在为 true 的字段，此legend 还是 选中
+					 * 如果flag 为false， 则表明所有的字段都为false， 此legend 就未选中
+					 *
+					 */
+
+					 if (flag) {
+						 console.log('dispatch', name);
+						 myChart.dispatchAction({
+							 type: 'legendSelect',
+							 name: name,
+						 });
+					 } else {
+						console.log('dispatch', name);
+							myChart.dispatchAction({
+								type: 'legendUnSelect',
+								name: name,
+							});
+					 }
+				}
+
  
 				var options = myChart.getOption();
-				options.series = constructData(DATASET, legendData, hideArrayName);
+				options.series = constructData(DATASET, legendData, allHideObject);
 				
 				myChart.setOption(options,
 				{
@@ -537,22 +607,27 @@ var DATASET = {
 		}
 		
 		myChart.on('legendselectchanged', function (params) {
+
+			// 为了调试方便，打印相关数据
 			console.log('params', params);
 			console.log('myChart', myChart.setOption);
 
+			// 此次触发 `特征` 的 `name`字段
+			var name = params.name;
 
-			var hideArray = [];
-			var selectedArray = params.selected;
-			var paramsKeys = Object.keys(selectedArray);
-			console.log('paramsKeys', paramsKeys);
-			for (var i = 0; i < 2; i++) {
-				console.log('selectedArray[paramsKeys[i]]', selectedArray[paramsKeys[i]]);
-				if (!selectedArray[paramsKeys[i]]) {
-					hideArray.push(paramsKeys[i]);
-				}
+			// 拿这个字段去更新全局的 allHideObject
+
+			// 去到keys 
+			var allHideObjectFeatureKeys = Object.keys(allHideObject);
+			for (var i = 0; i < allHideObjectFeatureKeys.length; i++) {
+				var personKey = allHideObjectFeatureKeys[i];
+				console.log('personKey', personKey);
+				allHideObject[ personKey ][name] = !allHideObject[ personKey ][name];
 			}
+			
+			console.log('allHideObject', allHideObject);
 			var options = myChart.getOption();
-			options.series = constructData(DATASET, legendData, hideArray);
+			options.series = constructData(DATASET, legendData, allHideObject);
 			
 			myChart.setOption(options,
 			{
