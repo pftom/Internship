@@ -523,23 +523,44 @@ var DATASET = {
 
 					// 遍历全局的 allHideObject 将此 人 的所有特征数据调为激活状态
 					var allHideObjectNameKeys = Object.keys(allHideObject);
-					for (var i = 0; i < allHideObjectNameKeys.length; i++) {
+
 						// 获取此 人 的 `name` 字段
 						var name = this.innerText;
 
 						// 获取此 人 字段下所有 特征
 						var personAllFeatureKeys = Object.keys( allHideObject[ name ] );
+						// 判断如果所有的 legend都unselect，点击人名应该就会全部选中
+						var globalFlagFalse = false;
+
 						for (var j = 0; j < personAllFeatureKeys.length; j++) {
-							// 将此 人 字段下所有  特征 设置为 true
-							allHideObject[ name ][ personAllFeatureKeys[j] ] = true;
+							for (var k = 0; k < allHideObjectNameKeys.length; k++) {
+								globalFlagFalse = globalFlagFalse || allHideObject[ allHideObjectNameKeys[k] ][ personAllFeatureKeys[j] ];
+							}
 						}
-					}
+
+						for (var j = 0; j < personAllFeatureKeys.length; j++) {
+
+							// 让人名  反转之后的legend 和现有的 legend激活数一样
+							var flagFalse = false;
+							for (var k = 0; k < allHideObjectNameKeys.length; k++) {
+								var allPersonSingleStatus = 
+									allHideObject[ allHideObjectNameKeys[k] ][ personAllFeatureKeys[j] ];
+
+								flagFalse = flagFalse || allPersonSingleStatus;
+							}
+
+							if (!globalFlagFalse) {
+								allHideObject[ name ][ personAllFeatureKeys[j] ] = true;
+							} else {
+								allHideObject[ name ][ personAllFeatureKeys[j] ] = flagFalse;
+							}
+							// 将此 人 字段下所有  特征 设置为 true
+						}
 				} else {
 					this.className = 'person-item inactive';
 
 					// 遍历全局的 allHideObject 将此 人 的所有特征数据调为 未激活状态
 					var allHideObjectNameKeys = Object.keys(allHideObject);
-					for (var i = 0; i < allHideObjectNameKeys.length; i++) {
 						// 获取此 人 的 `name` 字段
 						var name = this.innerText;
 
@@ -549,7 +570,6 @@ var DATASET = {
 							// 将此 人 字段下所有  特征 设置为 false
 							allHideObject[ name ][ personAllFeatureKeys[j] ] = false;
 						}
-					}
 				}
 
 				// 发起 legendSelect 和 legendUnSelect 事件来更新响应的legend
