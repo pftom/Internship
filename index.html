@@ -6,6 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="lib/echarts.js"></script>
 	<title>Document</title>
+	<style>
+		.active {
+			color: red;
+		}
+	</style>
 </head>
 <body>
     <div id="main" style="width: 600px;height:400px;">
@@ -272,8 +277,8 @@ var DATASET = {
 	 *  增加特征 就需要 增加 `相应的键值对`
 	 */
 	 var featureMapToColor = {
-		'收邮件': '#80cbc4',
-		'发邮件': '#88e186',
+		'收邮件': 'blue',
+		'发邮件': 'red',
 	 };
 
 
@@ -303,7 +308,6 @@ var DATASET = {
 			*/
 		 var i = 2, j = 0;
 
-		 console.log('allHideObject', allHideObject);
 
 		 // 用于构造要展现的数据
 		 var constructedData = [];
@@ -313,7 +317,6 @@ var DATASET = {
 			* 以及用于控制 数据的展现
 			*/
 		 for ( ; j < i; j++) {
-			console.log(legendData[j]);
 				constructedData.push({
 					name: legendData[j],
 					// pie 表示人， line 表示 人的特征
@@ -336,7 +339,6 @@ var DATASET = {
 			j = 0;
 			// 
 			const personData = legendData[i];
-			console.log('personData', personData);
 
 			// 这个人的 所有特征数据
 			const childDataset = dataset[personData];
@@ -393,7 +395,6 @@ var DATASET = {
 		 });
 
 
-		 console.log('constructedData', constructedData);
 		 return constructedData;
 	 }
   
@@ -439,11 +440,9 @@ var DATASET = {
 					},
 					formatter: function (params) {
 							if (!!params) {
-								console.log('params', params);
 								var name = params.seriesName
 														.replace('\n\n', '姓名：')
 														.replace('-', '<br >类别：')
-								console.log('name', name);
 								var value = params.data.value;
 								return name + '<br /> 时间：' + value[0] + '<br />数量：' + value[1];
 							}
@@ -553,7 +552,6 @@ var DATASET = {
 					}
 				}
 
-				console.log('allHideObject', allHideObject);
 				// 发起 legendSelect 和 legendUnSelect 事件来更新响应的legend
 				var personKeys = Object.keys(allHideObject);
 
@@ -562,15 +560,18 @@ var DATASET = {
 				for (var i = 0; i < featureKeys.length; i++) {
 					// 获取 此 特征 的 name
 					var name = featureKeys[i];
+					console.log('name', name);
 					/*
 					 * 设立 flag 为 true， 判断所有 `人` 的 此 `特征` 字段都为false，则unselect legend
 					 * 如果存在为 true 的字段，则 select legend
 					 */
-					var flag = false;
+					var flagFalse = false;
+					var flagTrue = true;
 					for (var j = 0; j < personKeys.length; j++) {
-						var personFeatureStatus = personKeys[ featureKeys[i] ];
-						flag = flag || personFeatureStatus;
+						var personFeatureStatus = allHideObject[ personKeys[j] ][ name ];
+						flagFalse = flagFalse || personFeatureStatus;
 					}
+
 
 					/* 
 					 * 如果flag 为 true 则表明存在为 true 的字段，此legend 还是 选中
@@ -578,29 +579,31 @@ var DATASET = {
 					 *
 					 */
 
-					 if (flag) {
-						 console.log('dispatch', name);
+					 console.log('allHideObject', allHideObject);
+					 if (flagFalse) {
+						 console.log('wo ye lai le', 'name', name);
+						myChart.dispatchAction({
+							type: 'legendSelect',
+							name: name,
+						});
+					 } 
+					 if (!flagFalse) {
+						 console.log('wo lai le', 'name', name);
 						 myChart.dispatchAction({
-							 type: 'legendSelect',
+							 type: 'legendUnSelect',
 							 name: name,
 						 });
-					 } else {
-						console.log('dispatch', name);
-							myChart.dispatchAction({
-								type: 'legendUnSelect',
-								name: name,
-							});
 					 }
-				}
+				} 
 
  
 				var options = myChart.getOption();
 				options.series = constructData(DATASET, legendData, allHideObject);
 				
 				myChart.setOption(options,
-				{
-					notMerge: true,
-				}
+					{
+						notMerge: true,
+					}
 				);
  
 			}
@@ -609,30 +612,70 @@ var DATASET = {
 		myChart.on('legendselectchanged', function (params) {
 
 			// 为了调试方便，打印相关数据
-			console.log('params', params);
-			console.log('myChart', myChart.setOption);
 
 			// 此次触发 `特征` 的 `name`字段
 			var name = params.name;
 
 			// 拿这个字段去更新全局的 allHideObject
 
+			/*
+			 * legend点击之后也不是单独的反转，具体有两种情况
+			 * 第一种： 都选中，或都未选中时，这种正常 `反转`
+			 * 第二种：同时存在选中和未选中的，这个时候只对选中的人做 `反转`
+			 */
+			var nodesArray = document.getElementsByClassName('person-item');
+			var i = 0;
+			// 对于所有未激活的，加入inActive 数组
+			var allInActiveArray = [];
+			for ( ; i < nodesArray.length; i++) {
+				// 如果类名中存在 inactive 则表示此时这个 人 字段 `未激活`
+				var flag = nodesArray[i].className.indexOf('inactive');
+				if (flag > 0) {
+					allInActiveArray.push(nodesArray[i].innerText);
+				}
+			}
+
 			// 去到keys 
 			var allHideObjectFeatureKeys = Object.keys(allHideObject);
 			for (var i = 0; i < allHideObjectFeatureKeys.length; i++) {
 				var personKey = allHideObjectFeatureKeys[i];
-				console.log('personKey', personKey);
+
+				// 如果这个人是 inactive的，那么不对它进行操作
+				if ( allInActiveArray.includes(personKey) ) {
+					continue;
+				}
 				allHideObject[ personKey ][name] = !allHideObject[ personKey ][name];
 			}
+
+			// 如果所有legend都 取消了，则将人也 取消选中
+			var isAllUnSelect = false;
+			var allFeatureKeys = Object.keys( allHideObject[ allHideObjectFeatureKeys[0] ] );
+			for (var j = 0; j < allHideObjectFeatureKeys.length; j++) {
+				// 保存值为了简洁
+				var allHideObjectFeatureOne = allHideObjectFeatureKeys[j];
+				for (var k = 0; k < allFeatureKeys.length; k++) {
+					//  保存值为了简洁
+					var allFeatureOne = allFeatureKeys[k];
+					isAllUnSelect = isAllUnSelect || allHideObject[ allHideObjectFeatureOne ][ allFeatureOne ];
+				}
+			}
+
+			console.log('nodesArray', nodesArray);
+
+			// 当所有的legend都为 false 的时候，就取消人名的高亮
+			if (!isAllUnSelect) {
+				for (var i = 0; i < nodesArray.length; i++) {
+					nodesArray[i].className = 'person-item inactive';
+				}
+			}
 			
-			console.log('allHideObject', allHideObject);
 			var options = myChart.getOption();
 			options.series = constructData(DATASET, legendData, allHideObject);
 			
 			myChart.setOption(options,
-			{
-				notMerge: true,
-			}
+				{
+					notMerge: true,
+				}
 			);
 		})
 
