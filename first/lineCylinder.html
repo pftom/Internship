@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="lib/echarts.js"></script>
+	<title>lineCylinder</title>
+</head>
+<body>
+    <div id="lineCylinder" style="width: 600px;height:400px;">
+		</div>
+
+  <script>
+    // get the cluster dom node
+    var chartDom = document.getElementById('lineCylinder');
+    // init the echarts instance from dom
+    var myChart = echarts.init(chartDom);
+
+    options = {
+      tooltip: {
+          trigger: 'axis'
+      },
+      toolbox: {
+          show: true,
+          feature: {
+              magicType: {show: true, type: ['stack', 'tiled']},
+              saveAsImage: {show: true}
+          }
+      },
+      xAxis: {
+          type: 'category',
+          data: ['周一','周二','周三','周四','周五','周六','周日']
+      },
+      yAxis: {
+          type: 'value'
+      },
+      series: [
+      {
+        name: '不成交',
+        type: 'bar',
+        barWidth: '60%',
+        data: [30, 20, 37, 25, 260, 160, 300],
+        itemStyle: {
+          normal: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+              offset: 0,
+              color: '#fff'
+            }, {
+                offset: 1,
+                color: '#c3d6fb'
+            }])
+          }
+        }
+      },
+        {
+            name: '成交',
+            type: 'line',
+            smooth: true,
+            lineStyle: {
+              normal: {
+                color: '#79aef3',
+              }
+            },
+            data: [30, 20, 37, 25, 260, 160, 300]
+        },
+      
+      ]
+    };
+    
+    myChart.setOption(options);
+  </script>
+</body>
+</html>

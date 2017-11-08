@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="lib/echarts.js"></script>
+	<title>Cluster</title>
+</head>
+<body>
+    <div id="cluster" style="width: 600px;height:400px;">
+		</div>
+
+  <script>
+    // get the cluster dom node
+    var chartDom = document.getElementById('cluster');
+    // init the echarts instance from dom
+    var myChart = echarts.init(chartDom);
+
+    
+    // Schema:
+// date,AQIindex,PM2.5,PM10,CO,NO2,SO2
+    var dataBJ = [
+      [100, 50, 100, 70, 90, 60],
+    ];
+
+    var dataBA = [
+      [70, 70, 70, 80, 70, 80],
+    ];
+
+    var lineStyle = {
+      normal: {
+        width: 1,
+        opacity: 0.5
+      }
+    };
+
+    var indicatorData = [
+          {name: '潮州1', max: 100},
+          {name: '潮州2', max: 100},
+          {name: '潮州3', max: 100},
+          {name: '潮州4', max: 100},
+          {name: '潮州5', max: 100},
+          {name: '潮州6', max: 100}
+      ];
+
+    options = {
+    // visualMap: {
+    //     show: true,
+    //     min: 0,
+    //     max: 20,
+    //     dimension: 6,
+    //     inRange: {
+    //         colorLightness: [0.5, 0.8]
+    //     }
+    // },
+    radar: {
+      indicator: indicatorData,
+      startAngle: 120,
+      name: {
+          textStyle: {
+              color: 'rgb(36, 87, 132)'
+          }
+      },
+      splitLine: {
+          lineStyle: {
+              color: [
+                  'rgba(238, 197, 102, 0.2)', 'rgba(238, 197, 102, 0.2)',
+                  'rgba(238, 197, 102, 0.3)', 'rgba(238, 197, 102, 0.2)',
+                  'rgba(238, 197, 102, 0.2)', 'rgba(238, 197, 102, 0.2)'
+              ].reverse()
+          }
+      },
+      splitArea: {
+          show: false
+      },
+      axisLine: {
+          lineStyle: {
+              color: 'rgba(238, 197, 102, 0.5)'
+          }
+      }
+    },
+    series: [
+      {
+          name: '潮州',
+          type: 'radar',
+          lineStyle: lineStyle,
+          data: dataBJ,
+          symbol: 'none',
+          itemStyle: {
+              normal: {
+                  color: 'blue'
+              }
+          },
+          areaStyle: {
+              normal: {
+                  opacity: 0.1
+              }
+          }
+      },
+      {
+        name: '潮州2',
+        type: 'radar',
+        lineStyle: lineStyle,
+        data: dataBA,
+        symbol: 'none',
+        itemStyle: {
+            normal: {
+                color: 'red'
+            }
+        },
+        areaStyle: {
+            normal: {
+                opacity: 0.1
+            }
+        }
+    },
+
+    ]
+    };
+    
+    myChart.setOption(options);
+  </script>
+</body>
+</html>
