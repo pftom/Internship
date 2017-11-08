@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="lib/echarts.js"></script>
+	<title>Document</title>
+	<style>
+		.active {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+    <div id="cluster" style="width: 600px;height:400px;">
+		</div>
+
+  <script>
+    // get the cluster dom node
+    var chartDom = document.getElementById('cluster');
+    // init the echarts instance from dom
+		var myChart = echarts.init(chartDom);
+
+    // point out the series data
+    var seriesData = {
+        '潮州': [
+          {
+            value: [ 1, 100 ],
+          },
+          {
+            value: [ 2, 40 ],
+          },
+          {
+            value: [ 3, 30 ],
+          },
+        ],
+        '汕头': [
+          {
+            value: [ 1, 20 ],
+          },
+          {
+            value: [ 4, 20 ],
+          },
+          {
+            value: [ 3, 20 ],
+          },
+        ]
+      };
+
+    // point out the legend data
+    var legendData = [
+      '潮州',
+      '汕头',
+    ];
+    
+    var options = {
+      title: {
+        text: '收入聚类分析图',
+        x: 0,
+        y: 0,
+      },
+      legend: {
+        right: 0,
+        data: legendData,
+        itemWidth: 8,
+        itemHeight: 7,
+        itemGap: 20,
+      },
+      xAxis: {
+        type: 'category',
+        data: [
+          '类别1',
+          '类别2',
+          '类别3',
+          '类别4',
+          '类别5',
+          '类别6',
+        ]
+      },
+      yAxis: {
+        type: 'value',
+      },
+      series: [
+        {
+          itemStyle: {
+            normal: {
+              color: 'rgb(116, 122, 214)'
+            }
+          },
+          type: 'scatter',
+          name: '潮州',
+          data: seriesData['潮州'],
+        },
+        {
+          itemStyle: {
+            normal: {
+              color: 'rgb(252, 188, 39)',
+            }
+          },
+          type: 'scatter',
+          name: '汕头',
+          data: seriesData['汕头'],
+        }
+      ]
+    };
+
+    myChart.setOption(options);
+  </script>
+</body>
+</html>
