@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="lib/echarts.js"></script>
+	<title>Cluster</title>
+</head>
+<body>
+    <div id="cluster" style="width: 600px;height:400px;">
+		</div>
+
+  <script>
+    // get the cluster dom node
+    var chartDom = document.getElementById('cluster');
+    // init the echarts instance from dom
+		var myChart = echarts.init(chartDom);
+
+    /*
+     * 所有需要的数据:
+     * [1, 100] 代表这个 scatter 图的二维数据， 
+     * 1, 2, 3 ... 分别代表 xAxis data字段数组中 第1， 2， 3... 值
+     * 100, 40, 30, 分别代表yAxis 的值
+     */
+    var seriesData = {
+        '潮州': [
+          {
+            value: [ 1, 100 ],
+          },
+          {
+            value: [ 2, 40 ],
+          },
+          {
+            value: [ 3, 30 ],
+          },
+        ],
+        '汕头': [
+          {
+            value: [ 1, 20 ],
+          },
+          {
+            value: [ 4, 20 ],
+          },
+          {
+            value: [ 3, 20 ],
+          },
+        ]
+    };
+
+    // 所有用到的颜色，可以自行定制
+    var optionColor = {
+      '潮州': 'rgb(116, 122, 214)',
+      '汕头': 'rgb(252, 188, 39)',
+    };
+
+    // point out the legend data
+    var legendData = [
+      '潮州',
+      '汕头',
+    ];
+
+    // 构建需要的数据
+    function constructData (primitiveData) {
+      // 申明一个需要返回的数据数组
+      var constructedData = [];
+
+      // 获取 原始 数据的所有keys
+      var dataKeys = Object.keys( primitiveData );
+
+      // 遍历keys，构建所需要的数据
+      var i = 0;
+      for ( ; i < dataKeys.length; i++) {
+        var dataKey = dataKeys[i];
+
+        // 开始构建数据
+        constructedData.push({
+          itemStyle: {
+            normal: {
+              color: optionColor[dataKey]
+            }
+          },
+          type: 'scatter',
+          name: dataKey,
+          data: seriesData[dataKey],
+        });
+      }
+
+      // 返回数据
+      return constructedData;
+    }
+    
+    var options = {
+      title: {
+        text: '自然人贡献度分析图',
+        x: 0,
+        y: 0,
+      },
+      xAxis: {
+        type: 'value',
+        axisLine: {
+          show: false,
+        },
+        splitLine: {
+          show: false,
+        }
+      },
+      yAxis: {
+        type: 'value',
+      },
+      series: [
+        {
+          type: 'line',
+          data: [
+            [0.1, 30],
+            [0.3, 40],
+            [0.5, 20],
+            [0.8, 10],
+            [0.9, 80],
+          ],
+        }
+      ]
+    };
+
+    myChart.setOption(options);
+  </script>
+</body>
+</html>
