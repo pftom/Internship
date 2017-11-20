@@ -179,7 +179,6 @@
         itemStyle:{normal:{opacity:0}},
         lineStyle:{normal:{opacity:0}},
       });
-      console.log('data', constructedData);
       return constructedData;
     } 
     
@@ -201,6 +200,13 @@
         data: ['小陆', '小颖', '小洪', '小曹'],
         splitLine: {
           show: true,
+        }
+      },
+      tooltip: {
+        trigger: 'item',
+        formatter: function (params) {
+          console.log('params', params);
+          return '时间：' + params.data.coord[0] + '<br />' + '姓名：' + params.data.coord[1];
         }
       },
       legend: {
