@@ -18,7 +18,6 @@
     var myChart = echarts.init(chartDom);
 
     options = {
-      color: ['#3398DB'],
       tooltip : {
           trigger: 'axis',
           axisPointer : {            // 坐标轴指示器，坐标轴触发有效
@@ -29,8 +28,8 @@
           {
               type : 'category',
               data : [
-                '低', 
-                '未', 
+                '低于最低交易监控价', 
+                '未缴清房地税', 
                 '未开具租赁发票', 
                 '自行经营', 
                 '低于租赁最低监控价', 
@@ -49,18 +48,47 @@
           {
               name:'直接访问',
               type:'bar',
-              data:[10, 52, 32, 34, 21],
-              itemStyle: {
-                normal: {
-                  color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-                    offset: 0,
-                    color: 'rgb(38, 198, 218)'
-                  }, {
-                      offset: 1,
-                      color: 'rgb(92, 107, 192)'
-                  }])
-                }
-              }
+              data:[ 
+                {
+                    value: 10,
+                    itemStyle: {
+                        normal: {
+                            color: '#b33432',
+                        }
+                    }
+                },
+                {
+                    value: 52,   
+                    itemStyle: {
+                        normal: {
+                            color: '#b8c14f',
+                        }
+                    }
+                },
+                {
+                    value: 32,
+                    itemStyle: {
+                        normal: {
+                            color: '#f1c149',
+                        }
+                    }  
+                },
+                {
+                    value: 34,
+                    itemStyle: {
+                        normal: {
+                            color: '#db813c',
+                        }
+                    }  
+                },
+                {
+                    value: 21,
+                    itemStyle: {
+                        normal: {
+                            color: '#3b7179',
+                        }
+                    }  
+                }],
           }
       ]
   };

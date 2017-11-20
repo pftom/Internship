@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="lib/echarts.js"></script>
+	<title>Timeline</title>
+</head>
+<body>
+    <div id="timeLine" style="width: 600px;height:400px;">
+		</div>
+
+  <script>
+    // get the cluster dom node
+    var chartDom = document.getElementById('timeLine');
+    // init the echarts instance from dom
+    var myChart = echarts.init(chartDom);
+
+    /*
+     *  原始数据集
+     *  这个时间线组件的绘制的数据格式都按照如下格式给出
+     *  函数 `constructData` 用来构造需要的数据
+     *
+     *
+     *  数据内容在下面有举例：⤵️
+     *
+     */ 
+    
+    var DATASET = {
+      '小陆': {
+        '发送': [
+          /*  这条数据的意思是： 
+          /* 小陆在2016/12/18 6:38:08给小曹发送一封邮件
+          /* 小曹在2016/12/18 10:38:08收到了小陆发来的邮件
+           * name 只是标记符，可以是任何值，这里用value的第一个值代替
+           * 下面的数据同理
+           */
+          [
+            // 第一条数据代表发送方
+            {name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', '小陆']},
+            // 第二条数据代表收件方
+            {name:'2016/12/18 7:38:08', value:['2016/12/18 10:38:08', '小曹']},
+          ],
+          [
+            {name:'2016/12/19 6:38:08', value:['2016/12/19 6:38:08', '小陆']},
+            {name:'2016/12/19 7:38:08', value:['2016/12/19 10:38:08', '小曹']},
+          ],
+        ],
+        '抄送': [
+          /*
+           *  一下数据和上面的注释同理
+           *  
+           */ 
+           [
+              {name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', '小陆']},
+              {name:'2016/12/18 7:38:08', value:['2016/12/18 10:38:08', '小洪']},
+           ],
+           [
+              {name:'2016/12/19 6:38:08', value:['2016/12/19 6:38:08', '小陆']},
+              {name:'2016/12/19 7:38:08', value:['2016/12/19 10:38:08', '小洪']},
+            ]
+        ],
+        '暗送': [
+            [
+              {name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', '小陆']},
+              {name:'2016/12/18 7:38:08', value:['2016/12/18 10:38:08', '小颖']},
+            ],
+            [
+              {name:'2016/12/19 6:38:08', value:['2016/12/19 6:38:08', '小陆']},
+              {name:'2016/12/19 7:38:08', value:['2016/12/19 10:38:08', '小颖']},
+            ],
+        ]
+      },
+      '小洪': {
+        '发送': [
+          [
+            {name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', '小洪']},
+            {name:'2016/12/18 7:38:08', value:['2016/12/18 10:38:08', '小陆']},
+          ],
+          [
+            {name:'2016/12/19 6:38:08', value:['2016/12/19 6:38:08', '小洪']},
+            {name:'2016/12/19 7:38:08', value:['2016/12/19 10:38:08', '小曹']},
+          ],
+        ],
+        '抄送': [
+          /*
+           *  一下数据和上面的注释同理
+           *  
+           */ 
+           [
+              {name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', '小洪']},
+              {name:'2016/12/18 7:38:08', value:['2016/12/18 10:38:08', '小颖']},
+           ],
+           [
+              {name:'2016/12/19 6:38:08', value:['2016/12/19 6:38:08', '小洪']},
+              {name:'2016/12/19 7:38:08', value:['2016/12/19 10:38:08', '小陆']},
+            ]
+        ],
+        '暗送': [
+            [
+              {name:'2016/12/18 6:38:08', value:['2016/12/18 6:38:08', '小洪']},
+              {name:'2016/12/18 7:38:08', value:['2016/12/18 10:38:08', '小陆']},
+            ],
+            [
+              {name:'2016/12/19 6:38:08', value:['2016/12/19 6:38:08', '小洪']},
+              {name:'2016/12/19 7:38:08', value:['2016/12/19 10:38:08', '小颖']},
+            ],
+        ]
+      }
+    };
+
+    // 对于邮件类别颜色的区分
+    var mapClassToColor = {
+      '发送': 'red',
+      '抄送': 'blue',
+      '暗送': 'green',
+    };
+
+        /*
+      * anchor 数据用来扩展  时间表示格式 到“小时”  不可删改。
+      * 
+      */
+      var anchor = [
+        {name:'2016/12/18 00:00:00', value:['2016/12/18 00:00:00', '小陆']},
+        {name:'2016/12/25 00:00:00', value:['2016/12/25 00:00:00', '小曹']}
+      ];
+
+    function constructData(originalData) {
+      // 需要构造的数据
+      var constructedData = [];
+      
+      // 人名的keys 数组
+      var personKeys = Object.keys(originalData);
+      // 遍历人名keys
+      for (var i = 0; i < personKeys.length; i++) {
+          var personItem = originalData[ personKeys[i] ];
+        // 邮件分类的keys 数组
+        var classKeys = Object.keys(personItem);
+        // 遍历邮件分类的数组
+        for (var j = 0; j < classKeys.length; j++) {
+          // 开始遍历每一个邮件分组
+          var dataArray = personItem[ classKeys[j] ]
+          for (var k = 0; k < dataArray.length; k++) {
+            // 开始构造数据
+            constructedData.push({
+              name: classKeys[j],
+              type: 'line',
+              smooth: true,
+              lineStyle: {
+                normal: {
+                  color: mapClassToColor[ classKeys[j] ],
+                }
+              },
+              markLine: {
+                symbol: ['circle', 'arrow'],
+                data: [
+                  [
+                    {
+                      coord: dataArray[k][0].value,
+                    },
+                    {
+                      coord: dataArray[k][1].value,
+                    }
+                  ]
+                ]
+              },
+              data: dataArray[k]
+            });
+          }
+        }
+      }
+
+      constructedData.push({
+        name:'.anchor',
+        type:'line', 
+        showSymbol:false, 
+        data:	anchor,
+        itemStyle:{normal:{opacity:0}},
+        lineStyle:{normal:{opacity:0}},
+      });
+      console.log('data', constructedData);
+      return constructedData;
+    } 
+    
+    var options = {
+      xAxis : {
+          type : 'time',
+          axisTick: {
+            show: false
+        },
+        axisLine: {
+            lineStyle: {
+                color: '#90979c'
+            }
+        },
+        position: 'top',
+      },
+      yAxis: {
+        type: 'category',
+        data: ['小陆', '小颖', '小洪', '小曹'],
+        splitLine: {
+          show: true,
+        }
+      },
+      legend: {
+        data: ['发送', '抄送', '暗送']
+      },
+      dataZoom:[
+      {
+        show:true,
+        realtime:true,
+        handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+          handleSize: '30%',
+          handleStyle: {
+              color: '#80cbc4'
+          },
+        fillerColor:'#d8faf4',
+        borderColor:"#b1b1b1"
+      },
+      {
+        type: 'inside',
+        start: 10,
+        end: 60,
+      }
+    ],
+      series: constructData( DATASET )
+    }
+    
+    myChart.setOption(options);
+  </script>
+</body>
+</html>
