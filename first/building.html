@@ -14,11 +14,15 @@
       <div class="clickPoint"></div>
     </div>
   </div>
-  <script src="http://www.zhangxinxu.com/study/js/zxx.drag.1.0.js" type="text/javascript"></script>
+  <script src="js/drag.js" type="text/javascript"></script>
   <script>
+    // container，控制可以拖动的空间
+    var container = document.getElementById('container');
+    // 被拖动的楼宇图，为了让可点击点和可拖动图片在同一个容器内
     var building = document.getElementById('building');
+    // 可拖动的图片
     var dragPic = document.getElementById('drag');
-    startDrag(dragPic, building);
+    startDrag(dragPic, building, container);
 
     var points = document.getElementsByClassName('clickPoint');
     for (var i = 0; i < points.length; i++) {
