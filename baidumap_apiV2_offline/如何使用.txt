@@ -1,0 +1,31 @@
+
+小郭@2016 http://www.xiaoguo123.com
+
+示例页面Demo: baidu_map_demo.html
+
+1. 确定你用的瓦片的图片后缀，如.png, .jpg。修改 baidumap_offline_v2_load.js 中的imgext
+var bdmapcfg = {
+  'imgext':'.jpg', //瓦片图的后缀 ------ 根据需要修改，一般是 .png .jpg
+  'tiles_dir':''   //瓦片图的目录，为空默认在 baidumap_v2/tiles/ 目录
+};
+
+2. 确定你用的瓦片的目录，默认在baidumap_v2/tiles/目录下，你也可以改成其他地址。修改 baidumap_offline_v2_load.js 中的tiles_dir
+
+3. 参考demo编写代码, 要点如下：
+ 1）只需要加载load文件
+    <script type="text/javascript" src="baidumapv2/baidumap_offline_v2_load.js"></script>
+ 2）加载css文件（貌似可不需要）
+    <link rel="stylesheet" type="text/css" href="../../baidumapv2/css/baidu_map_v2.css"/>
+ 3）定义个放置地图的容器，并用css控制高度和宽度   
+    <div id="map_demo"></div>
+ 4）书写js代码
+    <script type="text/javascript">  
+    // 百度地图API功能
+	var map = new BMap.Map("map_demo");    // 创建Map实例
+	map.centerAndZoom(new BMap.Point(116.404, 39.915), 8);  // 初始化地图,设置中心点坐标和地图级别
+	//map.addControl(new BMap.MapTypeControl());   //添加地图类型控件 离线只支持电子地图，卫星/三维不支持
+	//map.setCurrentCity("北京");          // 设置地图显示的城市 离线地图不支持！！
+	map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    map.addControl(new BMap.NavigationControl());   //缩放按钮
+    </script>
+  5）享受你的成就
