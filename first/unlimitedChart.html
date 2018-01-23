@@ -8,7 +8,7 @@
   <script src="lib/echarts.js"></script>
 </head>
 <body>
-  <div id="unlimittedChart"></div>
+  <div id="unlimittedChart" style="width: 600px;height:400px;"></div>
   <script>
     // get the cluster dom node
     var chartDom = document.getElementById('unlimittedChart');
@@ -64,16 +64,6 @@
             }
         ],
         series: [
-            { // For shadow
-                type: 'bar',
-                itemStyle: {
-                    normal: {color: 'rgba(0,0,0,0.05)'}
-                },
-                barGap:'-100%',
-                barCategoryGap:'40%',
-                data: dataShadow,
-                animation: false
-            },
             {
                 type: 'bar',
                 itemStyle: {
