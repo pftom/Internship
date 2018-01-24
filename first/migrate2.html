@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="lib/echarts.js"></script>
+  <script src="js/china.js"></script>
+  <script src="js/jquery.js"></script>
+	<title>Cluster</title>
+</head>
+<body>
+    <div id="cluster" style="width: 600px;height:400px;">
+		</div>
+
+  <script>
+    var myJson = {"type":"FeatureCollection","features":[{"type":"Feature","id":"440606","properties":{"name":"顺德区","cp":[113.281826,22.75851],"childNum":1},"geometry":{"type":"Polygon","coordinates":["@@AAC@C@C@AAAC@EDGFAfYBA@CA@CABGDGIEBEA@@CHBBEDC@ABABAJ@@WBI@CBCDCHCLCLAFCHGB@BBF@@@DBB@B@@ABEFB@BB@FB@DBBF@LDD@BABAB@B@@@D@DBB@B@BAD@DCDAFCBCBABABAFADA@@@AAC@@CAAAAAIIA@CCA@EAAAAAABCDCACAAAEAGACBA@@C@@BIDIDIDEBAGGCGAAA@AAC@A@AAA@A@AACAA@AAA@@AA@@@@@A@@AA@AAAA@@AAA@AAA@AAA@AAA@A@@AAA@AAA@@@A@A@A@@@@BC@AQEOAMAIAIBIDM@EAGEEGGIIACDEFELGJKHKBCACAEEAMEKGKIQAAIKOOIA@G@A@@@A@CCCAAEG@EBCBC@@C@CAC@EAA@C@A@ABCDC@ABABC@CDCDADAAFE@C@@ABABA@@AA@AB@@@ECA@A@@@@A@C@@A@@A@@@@@@@CBACAACDIHCA@@EHC@IHA@EDOFABC@CB@@IDA@@BA@CDAB@@A@@BA@@@AB@BC@CAA@ECA@E@EDEFKPENIx@DEZGdILGNIP@DBJDL@@B@@@@@@DB@BBEJAB@B@@@@@@@@A@GB@@@@A@@@C@@@A@CB@@KLC@BB@@BBBB@@ABA@@@@@@@@@@B@@B@@@BB@@@@@@A@A@@@A@AB@@@@ABAAA@A@CAA@@DABA@@B@B@@@BA@@AAB@@@@A@@@AA@@CBABA@@@@@A@@@@@@@@@@@@@@@@@@@@@@B@@@@@@@@@@BB@@A@@@@@@@@@@@@@@@A@@@@B@@@@@@@@@@@@A@@B@@@@@@@B@@@B@@@B@@@@@BAAABB@@BAB@@@@@@@BA@C@A@AB@BA@@@@@@B@B@@@B@B@@@B@B@@@@@@@@@B@@A@@@@@AAAD@@@@@@@@@@@@AB@@@@@@@BA@@@@@@@@@A@@@@@@@@@@@@@@@@@@@@B@B@@@@A@@@@@BB@B@@@BA@AD@@B@@@@BA@BB@BBBBBB@B@@BB@@@@BBB@@BB@D@B@@C@CB@@BB@@B@@@@@BA@@D@B@@ABAD@BA@@DB@BB@BD@@@@D@BAB@B@@@@@@AB@@@@@B@@@BBD@@@@@@@B@@ADBD@@BB@BAB@BABB@@D@@@@B@@@@@@@BBB@@B@@BA@@B@@@@@BA@@@A@@@BBA@ABBBB@@B@@CD@@@@BF@@F@@@@@BB@BBBBBB@BB@@AB@@BB@@@@B@BB@DAB@@@B@@ABDBAB@@A@BBA@@BA@@AA@A@A@@BBBB@@BA@FD@@EDGD@@G@AD@B@BB@BBB@@B@@@@@B@@@@@@@B@@@@BBB@@@@@@@@@@@@@@@@@B@@B@@BBD@@@@@BAB@D@BAB@@@@BABB@BB@@@@B@AAB@@@F@B@@B@@@@BB@@D@@B@@@@@@B@@@EN@@@BAB@@@@@@@@@B@BB@@@BBB@@B@@@@AB@@BBABBB@@@@A@@B@@AA@@@@@A@AA@A@A@AB@@@B@@@@AB@@A@@B@@@@@B@BA@@@@@@@@B@@@B@B@@C@@@@@A@A@@BA@@BA@@AABBB@@@@BBAB@@B@@D@@@@@@A@@@BAA@@@AB@@@B@@B@@@@@@B@BA@A@@B@@@@@BBB@@BB@@ABA@B@@DB@BA@@@@BB@BDBD@@BH@PBN@F@RET@@@@@B@F@DAFEHAH@PDB@@@@@@@LB@@D@DBFFDDFFHDDBF@HAH@HCDAB@BB@HBFBDBDDCBABA@AD@D@@B@BD@@A@@BBBBB@@BFB@B@BBB@FDDDBFB@BB@BBFBFB@@FENAJDB@D@BAB@B@BA@@BA@A@A@A@A@ABA@A@C@A@@DAB@@AD@@AB@AA@@@AB@B@BEA@AB@@BCBA@@BC@A@@FBDCDBDBBCBAD@BAD@D@@C@EDEHEDCB@FAFCFEBAAGB@@@DDDBB@DCBA@@@@B@JCB@@ADAD@BCDCDCBABADEBCDG@@ECIAACAAAB@BA@CAAA@@@@@@A@@@@@@ABGBG@K@E@GBE@C"],"encodeOffsets":[[116005,23452]]}},{"type":"Feature","id":"440608","properties":{"name":"高明区","cp":[112.882123,22.893855],"childNum":2},"geometry":{"type":"MultiPolygon","coordinates":[["@@AAAABA@AB@B@B@BCBAB@@A@C@@@A@A@A@AB@BA@C@A@A@@@C@@@@@A@@@C@A@C@A@@EAA@@@C@@@EBAB@@AA@ACCCAAA@@AA@@A@AACBE@CA@@C@C@A@C@@@A@A@@@@AB@@A@@@@@@A@@@@@@@@@@@@@A@CCB@@A@@@C@AAAECA@@AB@BC@AB@B@@@DABADADA@@@C@A@@@A@C@@A@CA@@AA@@@A@AA@@@@CBAB@@AA@@A@A@@@A@A@AAA@@A@@@AAA@A@@@@BA@C@AA@@@A@@@AACA@AA@@AC@AAA@@AA@@AA@A@@B@B@B@B@@AFA@@@@BA@A@A@@A@@AAA@AAA@A@@BA@@@A@C@A@A@@CA@@@C@A@C@AB@@A@AA@A@@A@@AAA@AA@@@A@@@AEA@BC@A@@ACAABCAA@@@ICAAC@AB@@AA@AAAA@CA@A@@@AAAAA@A@A@AA@@@AAAAAC@@A@AA@@@A@@@AA@CAC@EA@@@AAAAAAAA@A@@@@@@A@@@A@AC@CA@@@B@@@BC@A@AB@@CB@@CBA@@@@A@@@@AAAAA@@A@CA@A@ABA@@@@@A@@@@@@@@@@@@BABABAB@B@B@@@@CBA@@@ACAAAA@@AA@@@@@B@@@@@BA@@B@@@B@@A@EA@AA@@@@A@@@ACAA@@AA@@@CB@B@@@@@BAB@@A@AB@@ADB@@B@B@BA@@@CB@BBBABAB@@@B@B@B@@@BAAA@A@C@A@@@@CBAAC@A@ACAAABCA@@AAAAAAA@@ABA@BB@@@DA@@BA@@DABA@BB@@@@B@@@@@BA@B@@AB@@@@A@A@@@BBB@B@@@B@@A@@@@@AB@BB@@ABC@A@ABB@@@BBB@B@@AB@@@BB@BC@A@@@@BBB@B@@@@B@BB@@@@@B@@B@@@@@@@A@A@@@AA@@@@C@@@@@AB@@AAA@AB@@@A@@D@BA@@C@A@A@A@@B@B@B@B@BB@@D@@DBB@@@@A@@@AA@@@@@BA@B@AB@@A@@@AB@@@@@@@@@@@@@@@BBBBB@@A@@@@BAD@@B@B@@B@B@@@BBB@@@@BB@B@@@BB@BA@@DB@B@@BBBB@@B@@@B@BAB@B@B@@CAEACA@@@@@@@@@@AB@@@B@@A@AD@@A@@B@@B@BB@@@B@@C@@@@@@A@@@AABA@@@@@@@@@@@B@@@@DDB@B@@@AB@@@@C@@@@BB@BBD@@@@B@@DB@DA@@@BB@@B@B@B@@@BAD@B@B@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@A@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@B@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@B@@@@@@@@@@@@@@@@@@@@A@ABA@@D@@@@@@@@@@@@@@@@@@@@@@@@@@@@@B@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@BB@@@@@@@@@@@@@@@@@@@@@@@@@@@B@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@B@@@@@@@@A@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@CB@@@@@@@@@@@@@@@@@@@@@@@@A@@@@@@@@@@@@@@@@@@@@@@@@@@@@@A@@@@@@@@@@@@@@@@@@@@@@@@@@B@@@@@@@@@@A@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@A@@@@@@@@@@B@@@@@@@@@@@@@@@@@@@@@@@@@@AAA@@@@AA@@@@@@@@@@@@@@@@@@@@@@@@@@@@A@@A@@@@@A@@@@@A@@@@@@@@B@@@@B@@@@B@@@@@BA@@B@@@@@@A@@@@A@@@@@@@A@@@@@@@@@C@@@@@@@@@@@@@@@@@@@@@@@@@@@@A@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@AA@@@@@A@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@B@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@A@@@@@@@A@@@@@@@@@@@@@@@@@@@A@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@A@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@A@@@@@@@@B@@@@@@@@@@@@@@@A@@@@@@@@@@@@@@@@A@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@AA@@AA@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@A@@@@@@@@@A@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@A@@A@@@@@@A@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@A@@@@@@@@@@A@@@@BA@A@ADAB@BABC@CA@@@A@AA@AD@B@BB@@B@@@B@B@@@B@BA@@A@@A@@B@@@BBB@@@BA@@@@A@@@@@BCD@@A@@@AB@@A@@B@@B@@@@B@@AB@@CA@C@A@A@C@A@@A@@EAAD@BADCB@BA@ABA@CAA@@A@A@AA@A@@A@@A@@@A@@A@A@@B@BADABCBABA@@A@@@A@@ABAAA@CAC@@@@A@@@@@A@A@AA@@@@@B@@BB@B@@BBBB@@@B@@AAAA@AAAA@ABAB@D@@AA@@@@AB@@BBA@@@A@@A@@@BAB@BC@ABAB@@@CB@@@BAB@@ABC@@@AAAB@@@@@@B@@B@B@B@BA@@AA@AA@@@@@B@@@B@@@AA@@E@ABAAA@AAAB@@@@@B@BAB@B@@ABAA@@@@@D@@@D@B@BA@@BBDABA@AAA@A@CAAAC@@@AB@BA@EBA@@@@E@A@AA@@A@@AC@A@@AA@@@AAC@A@@@@A@@@C@@@ABC@A@ABA@A@@@AA@A@@@C@@AAA@@BCB@@A@AAAC@@A@@AAABC@@AA@@AC@@@A@@AA@@AB@@CB@DAD@B@@@BA@A@CAAB@@A@@AA@@AA@@@A@@@@@@@@@@@@@A@A@@@@A@@ABA@AAAAAAEAAAA@AA@@@@A@@@A@AA@@A@CAA@A@@A@@@ABA@@BABAB@@ADA@@D@@@B@BCD@BA@@@A@A@A@AAAAAA@@@ACAAA@A@AB@@@BA@@@E@AA@@EE@AAC@CAC@C@@@A@@@A@@AAB@BA@A@AAA@AAAA@@AAA@AA@AAA@C@@@A@ACAC@@C@@@AA@AA@A@EA@AAAA@@BA@@@ABCAC@CAAA@@AA@@@@A@AAAAAAA@@@AA@@@@@@@@@@@@A@@B@@ABA@ABA@C@CBAD@BB@BB@@@@@@@@CB@BBB@BB@@BBB@@@B@BBB@F@@AD@@AB@@@D@B@BA@@@@@@@@B@DDB@@@BADA@A@@@@@@B@BA@@@DD@@DABBDBD@BA@@BA@@@@@@@@@@@@@@@@FD@@@BB@BB@@@B@@@@B@DA@@DB@B@@AD@BBB@@BB@@BB@D@BDB@B@B@@@@A@A@@AAAA@AB@BA@AB@B@BABBB@BAB@@@@@CA@@@A@A@AD@@@@@BA@@@AB@B@B@@A@@BBB@@@@@BA@@@@@A@@@@BCBCF@BA@@@A@@@@@@B@B@BABA@@@@BABCDA@@@A@AAA@@@@BABCDGDA@C@@@@AAA@@A@AAA@@@A@CAA@A@@@@B@@A@@AAA@@A@A@@BABAD@@CBCBA@AA@AAAAAC@ABA@@AA@AAA@@A@AA@AAA@AA@AA@A@C@C@@AAACAA@@ABADABE@AAA@CAA@@CCCBE@C@CBABBDABC@AB@B@@A@AAA@A@AAA@CAAAA@E@ABA@A@@A@AC@AA@A@@BA@C@@AACA@A@A@ACA@CCCAA@ACC@AAA@C@C@ACCCACACCAAAC@CA@C@A@C@C@ABCBAAA@C@@BAFABABAB@FBBABA@C@A@@@AFBB@BCF@DBF@B@D@BBBDBB@B@B@BB@BBB@BABABBD@BC@A@@BBDA@ADAB@DABABA@E@@BABBB@B@D@B@DCB@D@DCFAHAHAHBDDDCF@D@DBBADABAF@DBDBBBDD@B@BCBAB@DBB@F@FDBBB@FB@@BDBBH@FBDBHDHBHFFBFBBDBDDBB@BADADBDBFAF@DCD@B@F@@BFDDBHBDBB@BAFBB@DFB@@DBFBD@D@BBBD@D@BBBBFBD@BF@BBDABABABAD@FBBBBD@BADC@@DADAB@FDDBDBDB@@B@BABCBA@CAA@A@@D@@BDC@A@@B@@@BA@@@A@A@@D@B@@BDBAD@B@@@DBBBB@ABAJBBB@@B@@@@@D@D@B@BB@@@B@@B@@AB@BBB@B@BBB@D@BABDD@BFDDBABABAB@@@BF@B@B@BB@BABAB@BFAB@D@@@BB@B@@D@D@@BBADA@CDABAB@BA@A@AA@BED@BAD@D@DA@@@AAA@@BAB@DB@BBB@ABABABDD@FDBHCHEFCNEJ@FAFDBB@D@DHBBAB@DADDBD@BBABCB@DB@DDDJD@ABC@CHBDBDBPB@@BB@@@@B@@@@@@@@@AFHFFDBADBFBF@HBBBD@BAD@F@BB@FD@DAHBDDD@FDB@@@BD@@BBA@ABA@@BB@@B@@BDB@B@B@@@@B@@B@@A@ABABADA@AAAB@@@@@@@@BBBBBB@@@B@@AB@@@@BBB@@B@BB@@AB@@AB@@@BCBCDA@B@@@B@@@B@BD@BADA@@B@@@B@@FA@@@@@AB@@@@@BBB@@@@BB@@@D@@@@@@@@B@B@B@@CBA@A@AD@BADABABA@@@@@BB@BB@@@DA@A@A@@BC@A@@@F@@@@DABA@A@B@@@@ED@B@@B@@@@@D@@@@@@@A@@B@@@@B@B@B@@@@A@@FC@@@B@@CBAB@B@@@@D@B@BA@@@@@@@@AB@@ABC@@@ABDB@@B@BA@@@@@@@BA@@@AB@@@B@@BB@AB@@@BD@@@@A@@@@@@A@@@@@@@@@@A@AB@@ACB@AA@@@A@@AB@B@@@@@A@A@A@AA@@AA@@B@BAB@@@ABAAAA@CBABB@BBBDBBBA@BC@@B@@C@@AB@@@@AAAAAA@A@@BB@@B@@AAAA@A@AE@CDABAB@@@BADCD@B@DABC@AA@@@@@@@@A@@BB@B@@BCB@@@@B@@@BABDD@DAB@B@@F@BBB@A@A@CFFDDB@FADBB@FAFBBEB@BADABA@CAAAE@A@@@@DEDEB@@A@ABAD@BD@BDBB@@BD@B@B@B@BBDHB@D@DAB@B@DDBDB@@B@B@BDFBFAFDDFDBDBFAB@DG@C@@BBD@DCFCB@BDD@F@F@BDBBDFBFBDB@FD@H@@ABEDC@ABAB@BBBEBCD@D@@B@DB@BBDDBDFF@DBD@@FBBAB@@D@BF@B@@@B@HB@@@@B@@@@@@@A@@@@BA@@@@@A@@@@@@@@A@@@@A@@@@@@@@@@@@B@@@@@@@@@@@@@@BB@@@@@@@@@A@@@@@@@@B@@@B@B@B@@@@@BB@@@@@@@@@@@B@@@@@@A@@@@@@BB@@A@@@@@@@AB@@@@@@@@@@@@@@@@B@@@B@@BB@A@@@@@@@@@@@A@@@@@@@@B@@@@@@@@@@B@@@@@@B@@@BA@@@@@@@@@@@@@@@@B@@@@A@@A@@@@@@@@A@@@@@@B@@@@@A@@@@@@@@@@@@@@@@@@@@@A@@A@@@@@@@@A@@@@@@@@@@@@B@@@@@@@@@@@@A@@@@@@@@@@@A@@@@@@@@@@@@@A@@@@@@@@@@@@@@@@@@@@A@@@@@@@@@@@@@CACBCFAF@BBDD@@@BDBDBB@BBDBDDBBDDDBDDDBFDDBDBFBDBFBHB@CBCBCBC@CBA@ABCB@BABABADCNKHINQJQDKBMA]FSBADIHIHIFCHEPO^_DQ@@@@@@@@@@@@DMBILOIEA@ABCBCDCDABABAHAD@BIFCDGDGBGBE@C@A@A@A@A@EDEDCDA@A@@@AACAEA@A@CCA@A@C@@CA@ADCAC@@GEIOEEECGCC@AA@ABACIBAD@@ADC@ABA@@DA"],["@@@@@@@@@B@@@@@@A@@B@A@@A@@@@@@@@AB@@@@@@@@@A@@@@@@@@@@@@@@@@@@B@B@@@@@@@@@@@B@@@@@@B@@@BA@@@A@@@@B@@@@@@@AA"]],"encodeOffsets":[[[115555,23386]],[[115497,23554]]]}},{"type":"Feature","id":"440607","properties":{"name":"三水区","cp":[112.899414,23.16504],"childNum":1},"geometry":{"type":"Polygon","coordinates":["@@@G@GDCDCBABCDC@@BABA@@@A@A@@@CEAAACACAGAE@IBKBBE@C@@@@@A@IDI@@@@@@UAGFCBABABA@@BA@@BAB@@A@A@A@A@A@A@CAE@C@EAIAC@C@GBCBA@A@C@AB@DABAD@B@D@@ANEFGF@GBIIEA@@@@@IAMAMCEIJCHIAM@A@CEGEEAACACCAACGEGAACK@IAEHK@CEAC@AA@@@@AA@@@@@@@@@@@@AC@@@@GEGA@ACCAAAACAAAC@A@A@@FIBECCCEEBG@CFIDEDEBCBA@@FEDCFCDCBEC@CDCDAD@@@@A@A@@@@@A@C@A@C@EB@@E@C@C@C@C@C@CBAAA@A@A@@ACA@AA@DK@GEAAEIAKD@CDGHIDGFMDK@@@@@@AMEQDKB@@CAA@CAA@AA@@AAAHMDIHGBMAEAC@KFGJ@HE@A@ADEN@@@@@F@BABAAG@@BCB@@CA@@AAABAB@B@@AC@AADABABC@AEB@A@@DC@ACA@BE@A@AAA@@@D@B@@AD@@@AAC@@@AAB@BACABC@A@AA@CAAAC@CAA@@A@AB@@DB@@CAAAAADIE@FICUEANCLIRMRGJMLCDABABABA@AD@BAB@DADADAD@DCLEPKZIVAVBTGLEJGFEJGTCR@\\A^ALELQPKJGHAF@HBLAHAFCH@D@DBD@B@@@FA@@@A@C@CBC@AB@BBDBD@F@F@BDBD@BBD@BD@BA@A@@@AAAB@@@HABDBBBF@F@DBD@BAFA@AECCE@AFGBCAEBCDABBB@FBDBBBB@AB@BBD@BAD@B@D@BBDBB@BADFFDA@CBCB@BC@CAAFGBE@AAACAAC@EAE@AT@FZ@DBDNADAD@B@@@@@J@FDBBHHBBFBDHBDDA@D@DCC@DA@AF@@FB@DG@AC@BCDC@EDGDGBGGEE@B@B@BBDBBBDBD@@@@@@DBBDDBBDBBJDJJHD@LFLJHJRJHD@DDBFBFBLDVHPLZDVOFWAG`W\\SRODaF@@ECEC@@CA@CBGAIFE@ABAACECC@GBM@KFA@AB@B@D@D@B@F@H@H@F@B@BFHAJ@@DDJF@B@B@BBB@@@B@F@F@F@F@B@B@BBB@BB@BBBB@@BBB@BB@@BB@B@B@B@B@B@D@B@BABFLDHDJB@BBBFF@BBF@HDJBHDBDDD@H@B@BBBBBDJFFHC@BB@AF@J@H@JBFBJDJ@RBFABIHGFC@GBEB@JAF@FEFAHAHDPD@F@HCFBHDD@FAFBHDFDB@BB@@B@DBDA@CJABBB@BGBABBDCFCVOHE@DCDLJ@B@BAB@B@@FD@@FC@ALEBABCBA@ADA@AB@@@@AB@@A@@@AAA@C@AAAACAA@Ce]IS@GLE@@@ABA@C@C@ABCBCBCBCDCBCBC@ADCBAB@B@BADDDBBBF@DCDABAD@@BD@BADA@EBCACACAAACDABABBBFB@BABA@CAACACABEBAF@D@FAHCFEBADAHCBCDEFAF@FDFFBDBBA@@B@@AF@BDDDBF@D@@@@@@CBCAI@@ACA@@ECCCCA@A@CBCACA@GAEAEAC@EBEBAF@BDDDDDDDD@D@DDDFBFB@FBD@DDBABA@E@CKC@AA@@A@@@A@ABAB@@AB@@AB@@CBA@CBA@A@ABCBA@@BA@@D@BC@@@ADGD@BA@ABAB@BAAAA@A@A@A@@@A@@AAA@@@AA@@AA@@@AB@@A@@@@AAA@@@AA@CAA@@A@A@@@ABABCBA@A@@@A@@@@A@C@A@@AACA@@@BA@@B@B@@@@A@@@A@@@AC@CAAA@CBADAB@CCCA@@AADCB@B@@AB@@A@@BA@AB@@A@A@C@C@C@A@A@@@A@@BABAB@B@D@B@D@BBB@BAB@B@B@BAB@BAB@BA@@B@BB@@BBB@B@@@BAB@@A@E@CBCBA@CDAB@BFDBFBFFBFB@DFB@BBBBB@D@B@D@BABABABA@A@AIMECAEECCCCCACCG@@@@AEBAFEDAB@@D@@F@DADABC@CEAAC@EAGAC@E@E@AB@B@B@BCBEBA@AA@AADCHGFCF@BADCBC@EAIBAB@BC@CCAA@AGEGEE@CF@"],"encodeOffsets":[[115761,23809]]}},{"type":"Feature","id":"440604","properties":{"name":"禅城区","cp":[113.112414,23.019643],"childNum":1},"geometry":{"type":"Polygon","coordinates":["@@ACACAE@GAAA@CBGDG@GBE@CAGCEECCEECAC@@@KA@@@@@@A@OCG@GBEFCBE@A@@@@@S@QFE@M@OAG@@AC@CA@AAA@@@@ABA@@CA@B@BA@@AA@@AA@A@@@@@AB@B@@A@A@@@@A@@@@A@@BA@@B@AB@@B@@@@@@@@CA@@@BAAA@@@@AABA@BB@@AB@@AB@B@@@@@D@@@@A@A@@@A@@@@@@B@@A@A@@@@@AB@@@BA@@@@@A@@BAB@B@B@@B@B@@@@BB@@@AB@@@@@AABAAA@@BA@@@@@AA@AA@@A@@A@A@@@@@@@@BA@A@@FM@@A@@@@@@@@AC@@@AA@@@@@AA@E@@@A@BBA@@@@@AAA@BA@A@@A@ABC@A@AB@@@@C@AA@@@AA@@@@@@@@@@@@@@@@@A@AA@@@@@A@@@@@@@A@@@@@AA@AAA@@A@ABCM@@@@@@@Q@I@GFIFCHGJGLELALABEPINGJOFCFBLLPBDDPCN@L@ZLGJ@FFBBJDP@JAPCDEDJDDBD@@B@D@FAJAD@DDBBDDBDBD@FAH@BBBB@BBD@H@J@H@FAPA@B@@B@B@@J@@@@F@DAD@@@B@@@@@B@BBD@B@B@B@H@@@@@D@DF@B@@@@@@BD@@@@@B@@B@D@@@BA@@@@HAJDB@@@@A@@@@B@@CBCBCBCBE@A@@@@@@@CDCB@@@@@@@@@@@B@BBD@B@DADABABABAAA@@@ACAA@@@@@AA@@AA@@@A@@BA@@BA@@BAB@@AB@@ABA@@@CBC@A@@@AB@@@B@BAB@DABADA@@B@DBDDBBB@BABAAACCAAAA@CAEC@A@I@@@CAAACCBCDAD@B@BEBCDA@@@@BA@AAAB@BCB@B@BB@@DB@@BB@@@@@@@@@@@@@@@@@@@@@BB@@@@@@@@@@A@@@@@@B@@@@A@@BADBFAFBBC"],"encodeOffsets":[[115885,23547]]}},{"type":"Feature","id":"440605","properties":{"name":"南海区","cp":[113.145577,23.031562],"childNum":1},"geometry":{"type":"Polygon","coordinates":["@@VFJD@EJFBCBBBB@DA@@CA@@B@BB@DBD@BBDBB@@B@BADDBABA@BB@@D@BB@@C@@BA@C@@@B@BBB@F@@ADB@BCD@@@BFA@BADABCBBBD@@BA@A@ABBB@BB@@DA@AD@@BHABABE@@@@@M@CF@B@BGFI@EH@LBDBFANGHCJGNBB@BB@@BBB@DBB@DA@CLFRBN@@@@@@CLENCHGJCH@DLCJBBFFB@HCLB@@BDB@BB@B@B@BBDAD@D@D@D@D@F@@@FAD@B@D@B@@@@@B@B@@@@@BCDCDCD@AFCDEDCDEF@@ABADCFCFEJ@DAHFFDDFDJA@EB@B@D@BBDBBBBBDD@BHBHF@@@@BD@@@@@@@@@@@@BB@@@@BBD@FB@DGLBF@JDLBBFHDHBBDDDBBBFFFH@D@BBNGJIDFJNDNBJB@@@@B@JFAJ@HHEFEBM@@@C@ABCBA@CBAD@B@B@DAHAD@D@JBFBD@F@DBB@B@B@B@B@B@@@BA@AB@@AB@BABADAHEVB@@@@@@CJ@J@B@@@@@DAFLAJAF@HBDBDBBBFB@D@@@B@B@@ABAB@@CDADABCDCD@H@H@@BBB@BBB@DAB@D@@@B@@@B@B@D@B@BBBAD@BABAB@B@@AB@D@B@BBD@B@B@BBB@BB@D@B@B@DBB@DAD@BABADAB@BABAB@BAB@D@B@BADABABAD@@@B@@@B@@@BB@B@D@D@F@D@@BD@@@B@BBB@BBB@@B@@@@@@BB@@DBBBB@D@B@D@NAFHBD@@@B@BAB@B@BE@@BNPBE@@BAT@BDFNLMLGB@JAFEBABA@@@C@AA@@A@C@ABC@AB@BABAB@B@D@D@B@B@@AB@@@@CBA@C@ABAB@BAB@D@B@D@BADCBADE@CBEBE@EBE@CBA@C@AAE@EAEAC@EEA@A@ABE@@@@@@@@@@BGAMNKF@@@@@H@@ABCBAB@BCBADCDADABABCBABABC@@BCBCBC@CAC@A@C@A@A@CBE@ACE@ASG@@A@AAACCACCACCEAA@C@@@G@@@@@@@E@@@A@@@@@@@A@@@@@@DC@@@@FCB@@@D@@@B@@@@@B@@@@@B@@@@@@@@@@@B@@@@@@@H@@@@@@@B@@@@@D@@@D@@@B@@@@@@@F@@@@ABA@IAOAIACK@A@BC@C@@@A@@@@@@BE@@@ABC@@@A@@@@@@@@BC@@@@DO@@@@FAB@BBDBBA@@@A@@@C@A@@A@C@@A@@A@@AB@@A@@@A@@@@@@@@@@AA@A@@BA@@AA@@CAAA@@@A@@@@B@@@AA@A@@@@@@A@C@A@@@@@@@UBAACAEAEEEAC@E@A@@@@ADC@@@AAA@AAA@ABCDIDCFAFCF@JCHEHELKDAF@NAJAPBXBJ@NFAECE@CFOBO@ABADBB@BAAAAC@ACBA@ABIB@CBGBA@AEA@AAAAE@C@CBEBAJAB@BC@ACAAAA@AACC@C@C@C@AAEAA@AC@C@ABC@ABADCACACDEA@@@BAD@@ABAD@@BAB@AFA@A@@B@@BBA@@BC@@BA@CB@@@B@D@BAB@B@B@B@B@BAB@@ABA@A@ABC@A@ICMBEF@@EAEAAAA@@AEACACC@EAA@A@AEA@AA@AAAA@@@BC@@A@AC@C@@BABABCDADEAEBCAAB@@@B@@A@@@@@@@@B@@@@@@@@A@@A@@@@@@@@@@@@@@@@@@@@AA@@CA@@AAA@A@ADA@BB@BAB@@@@CBADAFA@C@CBADDDBBDB@@J@B@D@BF@DBBBBDDBBABABA@AACCCAA@@@CBABCBA@ABA@@@A@@B@@@BAD@D@@AB@BA@@BA@AB@@AB@@AB@@@B@@BB@@BB@@@@B@DB@B@@BBABABABCBCBA@C@AAA@@@@@@@@@@@A@CD@D@@@@@@@BAFADADAD@DA@@@@@@B@@A@ICGB@@@@AB@@C@A@@@@A@@@@AC@@@@@@@ACEC@@@@@G@A@A@A@C@AAA@@@@@A@@@C@CBE@@@@@@IA@A@@@@AOBEBG@I@G@C@AAA@AA@ABG@EACACCCAACCC@IBEBC@A@@@ACCCCICFODIBO@ICAAEEI@KH@Y@KDMCOACKOAKDEPEHIJMFOBABKFKHKHIDGJEHEJ@R@@@@@@@N@H@@@HCFC@@ECB@@AA@AA@AB@B@B@@BB@@AB@AAB@@@BACABA@@@A@@BA@CAAA@@@@@AA@@BA@@AAA@AAAA@AAA@@@@E@@@AE@@@@DC@@@AA@AABAB@AA@@B@@@B@@A@@@@@AB@@AA@@@AA@A@@@@@@@A@@C@@@AAABA@ABA@@AC@CA@BA@@@@@@@C@AA@@A@@@@@A@@B@@@@A@A@ABC@@@@@ACA@@ACA@@ABC@AB@BA@C@@@AB@@@@A@@@AA@@DAD@@@@A@CAA@@AA@A@@A@@AA@A@AAAA@AAAB@@A@@A@@@BCB@@A@@@AAA@@@@B@@@@@@A@A@@@@@@@@@@@@@@@@@@B@@@@@@@@@B@@A@@@@@@BA@@@@@@@@@@@@BCBB@@@@B@@@@A@@@@@@@@@A@A@@@A@A@@@A@A@@@@B@@ABAB@D@B@@A@@@@@@BA@AA@BABB@A@@@@@A@@@A@@@A@@@@@@@AB@@@@@@@@@@@@@@A@@B@@@@@@@@@@@@@@@B@@@AA@@@@@@@@@@@A@@@@@@@@@@@@@@@@@@@@B@@@@@B@BADA@@BB@@B@@@@@BA@BB@@A@@@A@AB@BA@CB@DBB@B@BBBA@@@@BAB@@@B@B@@@@@@@AA@@A@@@@A@@@@@@@@B@BA@@AAAA@@AAD@LK@@DAB@@@D@@@B@@@@@HAB@@@@@@@@@@ABAFIAAA@@C@@@@A@@@CKAI@CEFGFKHK@OEICGA@@A@@@@@@@A@S@W@MAOAQFIJCFQ`KHaVUTOJICG@@@AA@@A@E@@@AA@@@@A@@A@@@B@@A@@@@B@@A@@A@AB@@A@A@@@@B@@AAAA@@@@@@AAA@@A@A@@@@AA@@@@A@AA@@@@@@@@AA@@B@@@A@@A@@A@@A@@B@@BB@@@B@@@B@@B@@B@@B@A@@BA@AA@BB@@B@@@@A@A@AAAA@@CD@AA@@@AACB@@@@@B@BA@@@A@@@ABAAA@AA@@@@A@@DB@@B@B@@@B@@@@ACA@AA@@CA@@A@ACAA@@A@AB@@@D@@A@@A@A@@@A@ACC@@@A@A@A@A@@A@AA@@@@@CA@@@A@C@CAEAAB@@AB@BA@@@A@@@@B@@ADC@A@ABAA@@@@@@ECA@CB@@AB@BCD@BC@ABDJAB@BBBD@HDFDFFJPHF@@BDCD@BDB@@@D@BDB@D@BFBDBBB@@B@B@DCFCFCB@B@B@B@D@F@HAHAHCDCJE@ABCBGBABADCDCDABAB@JFKPAJCN@@@@@@@@@@@@CR]`OPGFEDGJGJCJABETB^"],"encodeOffsets":[[115580,23507]]}}],"UTF8Encoding":true}
+    // get the cluster dom node
+    var chartDom = document.getElementById('cluster');
+    // init the echarts instance from dom
+    var myChart = echarts.init(chartDom);
+    function fetchData (geoJson) {
+    
+        myChart.hideLoading();
+    
+        echarts.registerMap('北京市', geoJson);
+    
+    var allData = {
+    "citys":[
+    {"name":"顺德骏景豪庭","value":[113.236176,22.919394,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"万科四季花城","value":[113.177772,23.153551,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"尚苑","value":[113.142224,22.721752,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"明珠广场","value":[113.1867,23.113249,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"中南花园","value":[113.185643,23.112743,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"岐江广场","value":[113.186111,23.11404,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"丽景花园","value":[113.132947,23.05089,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"白坭东岸小区","value":[112.8315,23.0691,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"东逸湾","value":[113.330212,22.792532,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"保利西子湾","value":[113.201623,23.144643,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"碧翠苑","value":[113.200595,23.094307,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"南海桂城奥园1号","value":[113.159177,23.054125,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"万科金域中央","value":[113.138838,23.053317,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"银海花园","value":[113.196568,23.117982,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"海边村","value":[112.890602,23.080612,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"碧桂园钻石湾","value":[113.258961,22.849472,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"白坭富景小区","value":[112.8315,23.0691,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"地质队社区","value":[112.874433,23.176433,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"童梦天下","value":[113.053744,23.015997,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"中海金沙湾","value":[113.198868,23.142318,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"恒大绿洲","value":[113.201623,23.144643,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"中海金沙馨园","value":[113.201623,23.144643,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"中海金沙里","value":[113.200258,23.19425,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"滨江一号","value":[113.164106,23.069926,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"圣堂大街","value":[113.0989,23.0325,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"中南海晖园","value":[113.184806,23.111063,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"瑞安花园","value":[113.194535,23.113525,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"东江国际","value":[113.115894,22.993351,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"恒翠华庭","value":[113.275128,22.771464,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"三水横涌小学","value":[112.8832,23.182,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"顺德均安尚苑","value":[113.142224,22.721752,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"三水港","value":[112.80517,23.10261,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"禅城机关幼儿园","value":[113.1195,23.0334,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"普君新城","value":[113.121512,23.028384,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"佛山高明明城工业区","value":[112.68624,22.86305,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"顺德星座尚筑","value":[113.138749,22.720182,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"天湖村","value":[112.93096,23.058213,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"禅城福宁幼儿园","value":[113.11098,23.02907,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"南海中部泌冲市场商圈","value":[113.18952,23.14759,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"佛山顺德容桂容边工业区","value":[113.30051,22.74846,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"佛山顺德容桂高黎工业区","value":[113.3217,22.7741,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"均安尚苑","value":[113.110422,22.780161,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"双城尚都","value":[113.132212,23.026091,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"平洲公园","value":[113.2081,23.0388,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"和丰明苑","value":[112.935948,23.036155,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"佛山顺德龙江苏溪工业区","value":[113.029,22.8642,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"佛山顺德均安凌西工业区","value":[113.1009,22.7069,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"顺德线现代名邸","value":[113.145507,22.718105,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"大沥黄岐教表村","value":[113.2,23.1107,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"金融高新区地铁站","value":[113.1538,23.0691,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"佛山顺德龙江榔头工业区","value":[113.25036,22.95023,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"顺德大良五沙三村商圈","value":[113.3449,22.818,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"公安小区","value":[113.115128,23.025863,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"高明千禧小学","value":[112.46607,22.75148,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"御江南","value":[112.883757,23.125835,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"广东省交通运输高级技工学校","value":[113.1334,23.0392,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"柏悦湾","value":[113.309537,22.748808,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"三水城南白坭商业中心商圈","value":[112.8361,23.0669,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"云东海","value":[112.84791,23.23578,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"佛山顺德均安畅兴工业园东区","value":[113.17237,22.68473,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"东江花苑","value":[113.12478,23.007051,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"御翠豪苑","value":[113.134102,22.72146,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    {"name":"风度国际名苑","value":[113.182976,23.112355,4],"symbolSize":2,"itemStyle":{"normal":{"color":"#F58158"}}},
+    ],
+    
+    
+    "moveLines":[
+    {"fromName":"顺德骏景豪庭","toName":"恒翠华庭","coords":[[113.167352,23.094106],[113.2751, 22.7715]]},
+    {"fromName":"万科四季花城","toName":"三水横涌小学","coords":[[113.177772,23.153551],[112.8832, 23.182]]},
+    {"fromName":"尚苑","toName":"尚苑","coords":[[113.142224,22.721752],[113.1195, 23.0334]]},
+    {"fromName":"尚苑","toName":"尚苑","coords":[[113.142224,22.721752],[113.11924, 23.03333]]},
+    {"fromName":"尚苑","toName":"尚苑","coords":[[113.142224,22.721752],[113.11944, 23.03331]]},
+    {"fromName":"尚苑","toName":"顺德均安尚苑","coords":[[113.119289,23.031254],[113.14184, 22.72247]]},
+    {"fromName":"明珠广场","toName":"三水港","coords":[[113.1867,23.113249],[112.80517, 23.10261]]},
+    {"fromName":"中南花园","toName":"三水港","coords":[[113.185643,23.112743],[112.80517, 23.10261]]},
+    {"fromName":"岐江广场","toName":"三水港","coords":[[113.186111,23.11404],[112.80517, 23.10261]]},
+    {"fromName":"尚苑","toName":"顺德均安尚苑","coords":[[113.119289,23.031254],[113.14295, 22.72161]]},
+    {"fromName":"尚苑","toName":"顺德均安尚苑","coords":[[113.119289,23.031254],[113.14184, 22.72243]]},
+    {"fromName":"尚苑","toName":"尚苑","coords":[[113.142224,22.721752],[113.11982, 23.03011]]},
+    {"fromName":"尚苑","toName":"禅城机关幼儿园","coords":[[113.142224,22.721752],[113.1195, 23.0334]]},
+    {"fromName":"尚苑","toName":"禅城机关幼儿园","coords":[[113.142224,22.721752],[113.11231, 23.028955]]},
+    {"fromName":"丽景花园","toName":"丽景花园","coords":[[113.132947,23.05089],[113.2658, 22.7414]]},
+    {"fromName":"丽景花园","toName":"丽景花园","coords":[[113.122755,22.992649],[113.2658, 22.7414]]},
+    {"fromName":"尚苑","toName":"普君新城","coords":[[113.142224,22.721752],[113.11851, 23.02872]]},
+    {"fromName":"万科四季花城","toName":"佛山高明明城工业区","coords":[[113.177772,23.153551],[112.68624, 22.86305]]},
+    {"fromName":"尚苑","toName":"顺德星座尚筑","coords":[[113.119289,23.031254],[113.140657, 22.721939]]},
+    {"fromName":"白坭东岸小区","toName":"天湖村","coords":[[112.833471,23.068157],[113.14686, 23.01465]]},
+    {"fromName":"尚苑","toName":"禅城福宁幼儿园","coords":[[113.142224,22.721752],[113.11098, 23.02907]]},
+    {"fromName":"尚苑","toName":"禅城福宁幼儿园","coords":[[113.142224,22.721752],[113.113625, 23.029335]]},
+    {"fromName":"尚苑","toName":"禅城机关幼儿园","coords":[[113.142224,22.721752],[113.11947, 23.03335]]},
+    {"fromName":"东逸湾","toName":"南海中部泌冲市场商圈","coords":[[113.330212,22.792532],[113.19071, 23.14488]]},
+    {"fromName":"尚苑","toName":"普君新城","coords":[[113.142224,22.721752],[113.12215, 23.02806]]},
+    {"fromName":"万科四季花城","toName":"佛山高明明城工业区","coords":[[113.177772,23.153551],[112.6862, 22.8632]]},
+    {"fromName":"万科四季花城","toName":"佛山高明明城工业区","coords":[[113.177772,23.153551],[112.69842, 22.88509]]},
+    {"fromName":"东逸湾","toName":"南海中部泌冲市场商圈","coords":[[113.330212,22.792532],[113.18755, 23.14482]]},
+    {"fromName":"东逸湾","toName":"南海中部泌冲市场商圈","coords":[[113.330212,22.792532],[113.18952, 23.14759]]},
+    {"fromName":"保利西子湾","toName":"佛山顺德容桂容边工业区","coords":[[113.201623,23.144643],[113.30051, 22.74846]]},
+    {"fromName":"碧翠苑","toName":"三水横涌小学","coords":[[113.200595,23.094307],[112.8832, 23.182]]},
+    {"fromName":"南海桂城奥园1号","toName":"佛山顺德容桂高黎工业区","coords":[[113.159177,23.054125],[113.3217, 22.7741]]},
+    {"fromName":"万科金域中央","toName":"佛山顺德容桂高黎工业区","coords":[[113.138838,23.053317],[113.3217, 22.7741]]},
+    {"fromName":"尚苑","toName":"尚苑","coords":[[113.142224,22.721752],[113.11949, 23.03334]]},
+    {"fromName":"尚苑","toName":"均安尚苑","coords":[[113.119289,23.031254],[113.1394, 22.7177]]},
+    {"fromName":"尚苑","toName":"双城尚都","coords":[[113.142224,22.721752],[113.1278, 23.032]]},
+    {"fromName":"银海花园","toName":"三水港","coords":[[113.196568,23.117982],[112.8052, 23.1026]]},
+    {"fromName":"海边村","toName":"平洲公园","coords":[[112.890602,23.080612],[113.20814, 23.03883]]},
+    {"fromName":"碧桂园钻石湾","toName":"和丰明苑","coords":[[113.258961,22.849472],[112.9068, 23.0384]]},
+    {"fromName":"保利西子湾","toName":"佛山顺德龙江苏溪工业区","coords":[[113.201623,23.144643],[113.02895, 22.86421]]},
+    {"fromName":"尚苑","toName":"佛山顺德均安凌西工业区","coords":[[113.119289,23.031254],[113.10097, 22.70701]]},
+    {"fromName":"尚苑","toName":"顺德线现代名邸","coords":[[113.119289,23.031254],[113.1455, 22.7181]]},
+    {"fromName":"白坭富景小区","toName":"天湖村","coords":[[112.8315,23.0691],[113.14686, 23.01465]]},
+    {"fromName":"南海桂城奥园1号","toName":"佛山顺德容桂高黎工业区","coords":[[113.159177,23.054125],[113.32216, 22.77427]]},
+    {"fromName":"万科金域中央","toName":"佛山顺德容桂高黎工业区","coords":[[113.138838,23.053317],[113.32216, 22.77427]]},
+    {"fromName":"地质队社区","toName":"大沥黄岐教表村","coords":[[112.8709,23.1755],[113.1927, 23.1091]]},
+    {"fromName":"尚苑","toName":"顺德均安尚苑","coords":[[113.119289,23.031254],[113.14184, 22.72246]]},
+    {"fromName":"银海花园","toName":"三水港","coords":[[113.196568,23.117982],[112.80517, 23.10261]]},
+    {"fromName":"童梦天下","toName":"佛山顺德容桂高黎工业区","coords":[[113.053744,23.015997],[113.3217, 22.7741]]},
+    {"fromName":"尚苑","toName":"金融高新区地铁站","coords":[[113.142224,22.721752],[113.1538, 23.0691]]},
+    {"fromName":"中海金沙湾","toName":"三水港","coords":[[113.198868,23.142318],[112.80517, 23.10261]]},
+    {"fromName":"保利西子湾","toName":"佛山顺德龙江榔头工业区","coords":[[113.201623,23.144643],[113.03008, 22.87732]]},
+    {"fromName":"保利西子湾","toName":"顺德大良五沙三村商圈","coords":[[113.201623,23.144643],[113.34843, 22.81297]]},
+    {"fromName":"恒大绿洲","toName":"顺德大良五沙三村商圈","coords":[[113.201623,23.144643],[113.34843, 22.81297]]},
+    {"fromName":"中海金沙湾","toName":"三水港","coords":[[113.198868,23.142318],[112.8052, 23.1026]]},
+    {"fromName":"保利西子湾","toName":"顺德大良五沙三村商圈","coords":[[113.201623,23.144643],[113.35292, 22.81114]]},
+    {"fromName":"恒大绿洲","toName":"顺德大良五沙三村商圈","coords":[[113.201623,23.144643],[113.35292, 22.81114]]},
+    {"fromName":"尚苑","toName":"公安小区","coords":[[113.142224,22.721752],[113.1155, 23.0264]]},
+    {"fromName":"尚苑","toName":"双城尚都","coords":[[113.142224,22.721752],[113.12823, 23.02831]]},
+    {"fromName":"明珠广场","toName":"佛山顺德容桂高黎工业区","coords":[[113.1867,23.113249],[113.3217, 22.7741]]},
+    {"fromName":"尚苑","toName":"双城尚都","coords":[[113.142224,22.721752],[113.14686, 23.01465]]},
+    {"fromName":"尚苑","toName":"顺德均安尚苑","coords":[[113.119289,23.031254],[113.14184, 22.72244]]},
+    {"fromName":"保利西子湾","toName":"三水港","coords":[[113.201623,23.144643],[112.80517, 23.10261]]},
+    {"fromName":"恒大绿洲","toName":"三水港","coords":[[113.201623,23.144643],[112.80517, 23.10261]]},
+    {"fromName":"中海金沙馨园","toName":"三水港","coords":[[113.201623,23.144643],[112.80517, 23.10261]]},
+    {"fromName":"中海金沙里","toName":"高明千禧小学","coords":[[113.200258,23.19425],[112.46607, 22.75148]]},
+    {"fromName":"滨江一号","toName":"三水港","coords":[[113.164106,23.069926],[112.80517, 23.10261]]},
+    {"fromName":"碧翠苑","toName":"佛山顺德容桂高黎工业区","coords":[[113.200595,23.094307],[113.3217, 22.7741]]},
+    {"fromName":"碧桂园钻石湾","toName":"和丰明苑","coords":[[113.258961,22.849472],[112.90681, 23.03841]]},
+    {"fromName":"圣堂大街","toName":"佛山顺德容桂高黎工业区","coords":[[113.0989,23.0325],[113.3217, 22.7741]]},
+    {"fromName":"恒大绿洲","toName":"佛山顺德容桂高黎工业区","coords":[[113.201623,23.144643],[113.32166, 22.77406]]},
+    {"fromName":"明珠广场","toName":"三水港","coords":[[113.1867,23.113249],[112.8052, 23.1026]]},
+    {"fromName":"中南花园","toName":"三水港","coords":[[113.185643,23.112743],[112.8052, 23.1026]]},
+    {"fromName":"岐江广场","toName":"三水港","coords":[[113.186111,23.11404],[112.8052, 23.1026]]},
+    {"fromName":"保利西子湾","toName":"三水横涌小学","coords":[[113.201623,23.144643],[112.8832, 23.182]]},
+    {"fromName":"恒大绿洲","toName":"三水横涌小学","coords":[[113.201623,23.144643],[112.8832, 23.182]]},
+    {"fromName":"中海金沙馨园","toName":"三水横涌小学","coords":[[113.201623,23.144643],[112.8832, 23.182]]},
+    {"fromName":"中海金沙里","toName":"三水港","coords":[[113.200258,23.19425],[112.80517, 23.10261]]},
+    {"fromName":"中南海晖园","toName":"佛山顺德容桂高黎工业区","coords":[[113.184806,23.111063],[113.3217, 22.7741]]},
+    {"fromName":"银海花园","toName":"高明千禧小学","coords":[[113.196568,23.117982],[112.46607, 22.75148]]},
+    {"fromName":"万科四季花城","toName":"御江南","coords":[[113.177772,23.153551],[112.86981, 23.13118]]},
+    {"fromName":"尚苑","toName":"禅城机关幼儿园","coords":[[113.142224,22.721752],[113.119245, 23.03332]]},
+    {"fromName":"尚苑","toName":"普君新城","coords":[[113.142224,22.721752],[113.12363, 23.03077]]},
+    {"fromName":"保利西子湾","toName":"三水港","coords":[[113.201623,23.144643],[112.8052, 23.1026]]},
+    {"fromName":"恒大绿洲","toName":"三水港","coords":[[113.201623,23.144643],[112.8052, 23.1026]]},
+    {"fromName":"中海金沙馨园","toName":"三水港","coords":[[113.201623,23.144643],[112.8052, 23.1026]]},
+    {"fromName":"尚苑","toName":"广东省交通运输高级技工学校","coords":[[113.142224,22.721752],[113.1334, 23.0392]]},
+    {"fromName":"明珠广场","toName":"佛山顺德容桂高黎工业区","coords":[[113.1867,23.113249],[113.323335, 22.771727]]},
+    {"fromName":"明珠广场","toName":"三水横涌小学","coords":[[113.1867,23.113249],[112.8832, 23.182]]},
+    {"fromName":"保利西子湾","toName":"柏悦湾","coords":[[113.201623,23.144643],[113.309955, 22.748503]]},
+    {"fromName":"恒大绿洲","toName":"柏悦湾","coords":[[113.201623,23.144643],[113.309955, 22.748503]]},
+    {"fromName":"中海金沙里","toName":"佛山顺德容桂高黎工业区","coords":[[113.200258,23.19425],[113.3217, 22.7741]]},
+    {"fromName":"万科四季花城","toName":"三水横涌小学","coords":[[113.177772,23.153551],[112.88325, 23.18208]]},
+    {"fromName":"中海金沙湾","toName":"海边村","coords":[[113.198868,23.142318],[112.80517, 23.10261]]},
+    {"fromName":"白坭东岸小区","toName":"三水城南白坭商业中心商圈","coords":[[112.833471,23.068157],[113.14686, 23.01465]]},
+    {"fromName":"海边村","toName":"平洲公园","coords":[[112.890602,23.080612],[113.2081, 23.0388]]},
+    {"fromName":"中海金沙馨园","toName":"云东海","coords":[[113.201623,23.144643],[112.84154, 23.21927]]},
+    {"fromName":"尚苑","toName":"禅城机关幼儿园","coords":[[113.142224,22.721752],[113.131235, 23.026125]]},
+    {"fromName":"尚苑","toName":"普君新城","coords":[[113.142224,22.721752],[113.11991, 23.02883]]},
+    {"fromName":"万科四季花城","toName":"佛山高明明城工业区","coords":[[113.177772,23.153551],[112.6862, 22.86309]]},
+    {"fromName":"中海金沙里","toName":"佛山高明明城工业区","coords":[[113.200258,23.19425],[112.68624, 22.86305]]},
+    {"fromName":"保利西子湾","toName":"佛山顺德龙江苏溪工业区","coords":[[113.201623,23.144643],[113.029, 22.8642]]},
+    {"fromName":"瑞安花园","toName":"三水横涌小学","coords":[[113.194535,23.113525],[112.8832, 23.182]]},
+    {"fromName":"中海金沙馨园","toName":"云东海","coords":[[113.201623,23.144643],[112.8415, 23.2193]]},
+    {"fromName":"恒大绿洲","toName":"佛山顺德容桂高黎工业区","coords":[[113.201623,23.144643],[113.3217, 22.7741]]},
+    {"fromName":"滨江一号","toName":"三水港","coords":[[113.164106,23.069926],[112.8052, 23.1026]]},
+    {"fromName":"中海金沙里","toName":"三水港","coords":[[113.200258,23.19425],[112.8052, 23.1026]]},
+    {"fromName":"万科四季花城","toName":"佛山高明明城工业区","coords":[[113.177772,23.153551],[112.69169, 22.87364]]},
+    {"fromName":"万科四季花城","toName":"佛山高明明城工业区","coords":[[113.177772,23.153551],[112.6729, 22.8632]]},
+    {"fromName":"中海金沙里","toName":"佛山顺德均安畅兴工业园东区","coords":[[113.200258,23.19425],[113.17237, 22.68473]]},
+    {"fromName":"丽景花园","toName":"东江花苑","coords":[[113.259325,22.842176],[113.16921, 23.20021]]},
+    {"fromName":"尚苑","toName":"禅城福宁幼儿园","coords":[[113.142224,22.721752],[113.113632, 23.029453]]},
+    {"fromName":"保利西子湾","toName":"海边村","coords":[[113.201623,23.144643],[112.80517, 23.10261]]},
+    {"fromName":"恒大绿洲","toName":"海边村","coords":[[113.201623,23.144643],[112.80517, 23.10261]]},
+    {"fromName":"中海金沙馨园","toName":"海边村","coords":[[113.201623,23.144643],[112.80517, 23.10261]]},
+    {"fromName":"保利西子湾","toName":"顺德大良五沙三村商圈","coords":[[113.201623,23.144643],[113.34481, 22.81796]]},
+    {"fromName":"恒大绿洲","toName":"顺德大良五沙三村商圈","coords":[[113.201623,23.144643],[113.34481, 22.81796]]},
+    {"fromName":"碧桂园钻石湾","toName":"和丰明苑","coords":[[113.258961,22.849472],[112.90684, 23.03844]]},
+    {"fromName":"保利西子湾","toName":"佛山顺德龙江榔头工业区","coords":[[113.201623,23.144643],[113.03472, 22.87531]]},
+    {"fromName":"尚苑","toName":"顺德线现代名邸","coords":[[113.119289,23.031254],[113.14551, 22.71813]]},
+    {"fromName":"万科四季花城","toName":"佛山高明明城工业区","coords":[[113.177772,23.153551],[112.69843, 22.88507]]},
+    {"fromName":"保利西子湾","toName":"顺德大良五沙三村商圈","coords":[[113.201623,23.144643],[113.3449, 22.818]]},
+    {"fromName":"恒大绿洲","toName":"顺德大良五沙三村商圈","coords":[[113.201623,23.144643],[113.3449, 22.818]]},
+    {"fromName":"东江国际","toName":"御翠豪苑","coords":[[113.115894,22.993351],[113.137801, 22.722801]]},
+    {"fromName":"尚苑","toName":"公安小区","coords":[[113.142224,22.721752],[113.1158, 23.0244]]},
+    {"fromName":"中海金沙里","toName":"三水港","coords":[[113.200258,23.19425],[112.80518, 23.10259]]},
+    {"fromName":"尚苑","toName":"佛山顺德均安凌西工业区","coords":[[113.119289,23.031254],[113.10612, 22.70844]]},
+    {"fromName":"中海金沙馨园","toName":"云东海","coords":[[113.201623,23.144643],[112.84791, 23.23578]]},
+    {"fromName":"保利西子湾","toName":"佛山顺德龙江榔头工业区","coords":[[113.201623,23.144643],[113.03, 22.8773]]},
+    {"fromName":"中海金沙里","toName":"佛山顺德容桂高黎工业区","coords":[[113.200258,23.19425],[113.32166, 22.77406]]},
+    {"fromName":"保利西子湾","toName":"佛山顺德容桂容边工业区","coords":[[113.201623,23.144643],[113.30543, 22.74705]]},
+    {"fromName":"地质队社区","toName":"风度国际名苑","coords":[[112.8709,23.1755],[113.1804, 23.11]]},
+    {"fromName":"尚苑","toName":"佛山顺德均安凌西工业区","coords":[[113.119289,23.031254],[113.1009, 22.7069]]},
+    {"fromName":"中海金沙里","toName":"高明千禧小学","coords":[[113.200258,23.19425],[112.46006, 22.74489]]},
+    {"fromName":"万科四季花城","toName":"佛山高明明城工业区","coords":[[113.177772,23.153551],[112.7154, 22.8857]]},
+    {"fromName":"万科四季花城","toName":"佛山高明明城工业区","coords":[[113.177772,23.153551],[112.6917, 22.8736]]},
+    {"fromName":"保利西子湾","toName":"佛山顺德龙江苏溪工业区","coords":[[113.201623,23.144643],[113.02737, 22.85929]]},
+    {"fromName":"保利西子湾","toName":"佛山顺德容桂容边工业区","coords":[[113.201623,23.144643],[113.29905, 22.74578]]},
+    {"fromName":"恒大绿洲","toName":"佛山顺德容桂高黎工业区","coords":[[113.201623,23.144643],[113.3309, 22.7742]]},
+    {"fromName":"保利西子湾","toName":"佛山顺德龙江苏溪工业区","coords":[[113.201623,23.144643],[113.034, 22.863]]},
+    {"fromName":"尚苑","toName":"顺德均安尚苑","coords":[[113.119289,23.031254],[113.14184, 22.72242]]},
+    ]
+    };
+      
+    option = {
+        backgroundColor: '#404a59',
+        title: {
+            text: '佛山五区跨区通勤图',
+            left: 'center',
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        legend: {
+            show: true,
+            orient: 'vertical',
+            top: 'bottom',
+            left: 'right',
+            data: ['地点', '线路'],
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        geo: {
+            map: '北京市',
+            label: {
+                emphasis: {
+                    show: false
+                }
+            },
+            roam: true,
+            itemStyle: {
+                normal: {
+                    areaColor: '#323c48',
+                    borderColor: '#404a59'
+                },
+                emphasis: {
+                    areaColor: '#2a333d'
+                }
+            }
+        },
+        series: [{
+            name: '地点',
+            type: 'effectScatter',
+            coordinateSystem: 'geo',
+            zlevel: 2,
+            rippleEffect: {
+                brushType: 'stroke',
+                period:7,
+                scale:26
+            },
+            label: {
+                emphasis: {
+                    show: true,
+                    position: 'right',
+                    formatter: '{b}'
+                }
+            },
+            symbolSize: 2,
+            showEffectOn: 'render',
+            itemStyle: {
+                normal: {
+                    color: '#46bee9'
+                }
+            },
+            data: allData.citys
+        }, {
+            name: '线路',
+            type: 'lines',
+            coordinateSystem: 'geo',
+            zlevel: 2,
+            large: true,
+            effect: {
+                show: true,
+                constantSpeed: 30,
+                symbol: 'arrow',//ECharts 提供的标记类型包括 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'
+                symbolSize: 6,
+                trailLength: 0,
+            },
+            lineStyle: {
+                normal: {
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0, color: '#58B3CC'
+                        }, {
+                            offset: 1, color: '#F58158'
+                        }], false),
+                    width: 1,
+                    opacity: 0.6,
+                    curveness: 0.2
+                }
+            },
+            data: allData.moveLines
+        }]
+    };
+    myChart.setOption(option);
+    };
+
+    setTimeout(fetchData(myJson), 1000);
+  </script>
+</body>
+</html>

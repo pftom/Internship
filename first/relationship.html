@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="lib/echarts.js"></script>
+	<title>Cluster</title>
+</head>
+<body>
+    <div id="cluster" style="width: 600px;height:400px;">
+		</div>
+
+  <script>
+    // get the cluster dom node
+    var chartDom = document.getElementById('cluster');
+    // init the echarts instance from dom
+    var myChart = echarts.init(chartDom);
+    
+    var nodes = [
+      {
+          name: '爷爷',
+          x: 300,
+          y: 300,
+      }, 
+      {
+        name: '爸爸',
+        x: 200,
+        y: 100,
+      }, 
+      {
+        name: '二伯',
+        x: 200,
+        y: 100,
+      }, 
+      {
+        name: '大伯',
+        x: 200,
+        y: 100,
+      }, 
+      {
+        name: '姑爷',
+        x: 200,
+        y: 100,
+      }, 
+      {
+        name: '大哥',
+        x: 200,
+        y: 100,
+      }, 
+      {
+        name: '小哥',
+        x: 200,
+        y: 100,
+      }, 
+      {
+        name: '服哥',
+        x: 200,
+        y: 100,
+      }, 
+      {
+        name: '彬哥',
+        x: 200,
+        y: 100,
+      }, 
+      {
+        name: '外公',
+        x: 400,
+        y: 100,
+      }, 
+      {
+        name: '妈妈',
+        x: 400,
+        y: 100,
+      }, 
+      {
+        name: '二舅妈',
+        x: 400,
+        y: 100,
+      }, 
+      {
+        name: '大舅妈',
+        x: 400,
+        y: 100,
+      }, 
+      {
+        name: '花姐姐',
+        x: 400,
+        y: 100,
+      }, 
+      {
+        name: '场姐姐',
+        x: 400,
+        y: 100,
+      }, 
+    ];
+
+    var links = [
+      {
+        source: '爷爷',
+        target: '外公',
+      },
+      {
+        source: '爷爷',
+        target: '爸爸',
+      },
+      {
+        source: '爷爷',
+        target: '二伯',
+      },
+      {
+        source: '爷爷',
+        target: '大伯',
+      },
+      {
+        source: '爷爷',
+        target: '姑爷',
+      },
+      {
+        source: '爷爷',
+        target: '大哥',
+      },
+      {
+        source: '爷爷',
+        target: '小哥',
+      },
+      {
+        source: '爷爷',
+        target: '服哥',
+      },
+      {
+        source: '爷爷',
+        target: '彬哥',
+      },
+      {
+        source: '外公',
+        target: '妈妈',
+      },
+      {
+        source: '外公',
+        target: '二舅妈',
+      },
+      {
+        source: '外公',
+        target: '大舅妈',
+      },
+      {
+        source: '外公',
+        target: '花姐姐',
+      },
+      {
+        source: '外公',
+        target: '场姐姐',
+      },
+    ];
+
+    nodes.forEach(function (node, key) {
+      if (key % 2 === 0) {
+        node.itemStyle = {
+          normal: {
+            color: 'blue',
+          }
+        };
+      } else {
+        node.itemStyle = {
+          normal: {
+            color: 'red',
+          }
+        };
+      }
+        node.symbolSize = 10;
+        node.value = node.symbolSize;
+        // Use random x, y
+        node.x = node.y = null;
+        node.draggable = true;
+    });
+    option = {
+        
+        tooltip: {},
+        animation: false,
+        series : [
+            {
+                type: 'graph',
+                layout: 'force',
+                data: nodes,
+                links: links,
+                roam: true,
+                label: {
+                  normal: {
+    
+                      show: true,
+                      position: 'top',
+    
+                  }
+              },
+                force: {
+                    repulsion: 100
+                }
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+  </script>
+</body>
+</html>
